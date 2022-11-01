@@ -1,0 +1,15 @@
+{
+	"short_name": "E-Comm",
+	"name": "EWitt E-Commerce",
+	"icons": [
+		{
+			"src": "base_icon.png",
+			"sizes": "any",
+			"type": "image/webp"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "ewitt-ecommerce",
+	"version": "1.0.0",
+	"main": "server/server.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "node server --ignore client",
+		"develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+		"install": "cd server && npm i && cd ../client && npm i",
+		"seed": "cd server && npm run seed",
+		"build": "cd client && npm run build"
+	},
+	"devDependencies": {
+		"concurrently": "^5.1.0"
+	}
+}
