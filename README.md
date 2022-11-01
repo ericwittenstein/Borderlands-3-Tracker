@@ -43,7 +43,7 @@ This project is licensed under the MIT license. Learn more [HERE](LICENSE)
 
 ## GitHub Repo
 
-    **_ THIS IS A PLACEHOLDER FOR A GITHUB REPO _**
+https://github.com/ericwittenstein/EWittEcommerce
 
 ## Project Demo
 
