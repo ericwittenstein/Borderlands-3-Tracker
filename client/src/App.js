@@ -8,16 +8,50 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-//TODO: Add pages and components
+//TODOx: Add pages and components
+
 
 const httpLink = createHttpLink({ uri: "/graphql" });
 
-const authLink = setContext((_, {headers}) => {
-    const token = localStorage.getItem('id_token');
-    return {
-        headers: {
-            ...headers,
-            authorization: token ? `Bearer ${token}` : '',
-        },
-    };
+const authLink = setContext((_, { headers }) => {
+	const token = localStorage.getItem("id_token");
+	return {
+		headers: {
+			...headers,
+			authorization: token ? `Bearer ${token}` : "",
+		},
+	};
 });
+
+const client = new ApolloClient({
+	link: authLink.concat(httpLink),
+	cache: new InMemoryCache(),
+});
+
+function App() {
+	return (
+		<ApolloProvider client={client}>
+			<Router>
+				<div>
+					<StoreProvider>
+						<Nav />
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="/login" element={<Login />} />
+							<Route path="/signup" element={<Signup />} />
+							<Route path="/success" element={<Success />} />
+							<Route
+								path="/orderHistory"
+								element={<OrderHistory />}
+							/>
+							<Route path="/products/:id" element={<Detail />} />
+							<Route path="*" element={<NoMatch />} />
+						</Routes>
+					</StoreProvider>
+				</div>
+			</Router>
+		</ApolloProvider>
+	);
+}
+
+export default App;
