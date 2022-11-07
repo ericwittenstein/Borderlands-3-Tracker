@@ -1,17 +1,16 @@
 {
-	"name": "ewitt-ecommerce",
+	"name": "borderlands3tracker",
 	"version": "1.0.0",
-	"main": "server/server.ts",
+	"main": "server/server.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "node server/server.ts",
+		"start": "node server/server.js",
 		"develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
 		"install": "cd server && npm i && cd ../client && npm i",
 		"seed": "cd server && npm run seed",
 		"build": "cd client && npm run build"
 	},
 	"devDependencies": {
-		"@types/node": "^18.11.9",
 		"concurrently": "^7.0.0"
 	}
 }
