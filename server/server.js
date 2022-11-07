@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
 	res.json({ message: "Welcome!" });
 });
 
+require("./routes/routesIndex")(app);
+
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
 	app.listen(PORT, () => {
