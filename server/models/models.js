@@ -3,6 +3,7 @@ const sequelize = require("../config/connection");
 
 class Item extends Model {}
 
+// sequelize schema definition of item table
 Item.init(
 	{
 		id: {
@@ -32,7 +33,7 @@ Item.init(
             type: DataTypes.STRING,
         },
 		recommended: {
-			type: DataTypes.BOOLEAN,
+			type: DataTypes.STRING,
 			allowNull: false,
 		},
 	},

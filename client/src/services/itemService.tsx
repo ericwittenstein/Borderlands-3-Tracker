@@ -26,3 +26,5 @@ class ItemDataService {
         return http.delete<any>(`/items`);
     }
 }
+
+export default new ItemDataService();

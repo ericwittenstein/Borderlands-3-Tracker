@@ -10,7 +10,7 @@ exports.create = (req, res) => {
 		return;
 	}
 
-	// create item
+	// create item from input fields
 	const item = {
 		name: req.body.inputName,
 		item_type: req.body.inputType,
@@ -20,6 +20,7 @@ exports.create = (req, res) => {
 		recommended: req.body.inputRec,
 	};
 
+	//return response of item
 	Item.create(item)
 		.then((data) => {
 			res.send(data);
@@ -31,6 +32,7 @@ exports.create = (req, res) => {
 		});
 };
 
+// return all items
 exports.findAll = (req, res) => {
 	Item.findAll()
 		.then((data) => {
@@ -41,6 +43,7 @@ exports.findAll = (req, res) => {
 		});
 };
 
+// return item by id
 exports.findOne = (req, res) => {
 	const idFind = req.params.inputId;
 
@@ -57,6 +60,7 @@ exports.findOne = (req, res) => {
 		});
 };
 
+// update existing item
 exports.update = (req, res) => {
 	const idUp = req.params.inputId;
 
@@ -75,6 +79,7 @@ exports.update = (req, res) => {
 		});
 };
 
+// delete single item
 exports.deleteOne = (req, res) => {
 	const idDel = req.params.inputId;
 
@@ -93,6 +98,7 @@ exports.deleteOne = (req, res) => {
 		});
 };
 
+// delete all items; ONLY USE IF ABSOLUTELY CERTAIN
 exports.deleteAll = (req, res) => {
 	Item.destroy({
 		where: {},
