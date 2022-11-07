@@ -5,7 +5,7 @@ class Item extends Model {}
 
 Item.init(
 	{
-		item_id: {
+		id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			allowNull: false,

@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AddItem from "./components/add-itemComp";
 import Item from "./components/itemComp";
-import itemsList from "./components/items-listComp";
+import ItemsList from "./components/items-listComp";
 
 class App extends Component {
 	render() {
@@ -31,7 +31,7 @@ class App extends Component {
 
         <div className="container mt-3">
           <Routes>
-            <Route path="/items" element={itemsList}/>
+            <Route path="/items" element={ItemsList}/>
             <Route path="/add" element={AddItem}/>
             <Route path="/items/:id" element={Item}/>
           </Routes>
