@@ -1,10 +1,13 @@
-// express for restful api routing
+// imports
 const express = require("express");
+const routes = require("./routes");
+const sequelize = require("./config/connection");
 
 // cors provides middleware request authentication and options
 const cors = require("cors");
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 var corsOptions = {
 	origin: "http://localhost:8001",
@@ -23,8 +26,9 @@ app.get("/", (req, res) => {
 	res.json({ message: "Welcome!" });
 });
 
-// set port for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-	console.log(`Server is now running on port http://localhost:${PORT}`);
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+	app.listen(PORT, () => {
+		console.log(`Server is now running on port http://localhost:${PORT}`);
+	});
 });
