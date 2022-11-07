@@ -1,6 +1,6 @@
 // imports
 const express = require("express");
-const routes = require("./routes");
+const routes = require("./routes/routesIndex");
 const sequelize = require("./config/connection");
 
 // cors provides middleware request authentication and options
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 	res.json({ message: "Welcome!" });
 });
 
-require("./routes/routesIndex")(app);
+app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {

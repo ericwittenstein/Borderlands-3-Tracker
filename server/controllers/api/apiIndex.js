@@ -1,4 +1,4 @@
-const { Item } = require("../../models");
+const { Item } = require("../../models/models");
 
 // routes start with '/api/items'
 exports.create = (req, res) => {
