@@ -13,6 +13,7 @@ Item.init(
 		},
 		name: {
 			type: DataTypes.STRING,
+            unique: true,
 			allowNull: false,
 		},
 		item_type: {
