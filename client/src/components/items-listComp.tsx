@@ -1,5 +1,5 @@
 import { Component, ChangeEvent } from "react";
-import ItemDataService from "../services/itemService";
+import ItemDataService from "../services/itemDataService";
 import { Link } from "react-router-dom";
 import ItemData from "../types/itemTypes";
 
@@ -111,14 +111,14 @@ export default class ItemsList extends Component<Props, State> {
 			});
 	}
 
-    // function to render the component for the list of items
+	// function to render the component for the list of items
 	render() {
 		const { searchName, items, currentItem, currentIndex } = this.state;
 
 		return (
 			<div className="list row">
 				{/* Search Bar */}
-                <div className="col-md-8">
+				<div className="col-md-8">
 					<div className="input-group mb-3">
 						<input
 							type="text"
@@ -140,8 +140,10 @@ export default class ItemsList extends Component<Props, State> {
 				</div>
 				<div className="col-md-6">
 					<h4>Items List</h4>
-                    {/* This should be the list of all the items */}
-                    {/* TODO: Look into pagination to see about not displaying all at once */}
+					{/* This should be the list of all the items */}
+					{/* TODO: Look into pagination to see about not displaying all at once */}
+					{/* Pagination start point: https://www.bezkoder.com/node-js-sequelize-pagination-mysql/
+                        Pagination second step (option, adds Material UI, try to find Bootstrap instead):  https://www.bezkoder.com/react-pagination-material-ui/*/}
 					<ul className="list-group">
 						{items &&
 							items.map((item: ItemData, index: number) => (
@@ -167,7 +169,7 @@ export default class ItemsList extends Component<Props, State> {
 						Remove All
 					</button> */}
 				</div>
-                {/* This is the section that will render the details of the active item */}
+				{/* This is the section that will render the details of the active item */}
 				<div className="col-md-6">
 					{currentItem ? (
 						<div>
@@ -218,7 +220,7 @@ export default class ItemsList extends Component<Props, State> {
 						</div>
 					) : (
 						// If no item selected, prompt for selection
-                        <div>
+						<div>
 							<br />
 							<p>
 								Please click on an item to pull up its

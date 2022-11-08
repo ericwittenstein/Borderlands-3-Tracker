@@ -1,5 +1,5 @@
 import { Component, ChangeEvent } from "react";
-import ItemDataService from "../services/itemService";
+import ItemDataService from "../services/itemDataService";
 import ItemData from "../types/itemTypes";
 
 type Props = {};
@@ -224,9 +224,12 @@ export default class AddItem extends Component<Props, State> {
 							/>
 						</div>
 
-                        <button onClick={this.saveItem} className="btn btn-success">
-                            Submit
-                        </button>
+						<button
+							onClick={this.saveItem}
+							className="btn btn-success"
+						>
+							Submit
+						</button>
 					</div>
 				)}
 			</div>
