@@ -111,12 +111,14 @@ export default class ItemsList extends Component<Props, State> {
 			});
 	}
 
+    // function to render the component for the list of items
 	render() {
 		const { searchName, items, currentItem, currentIndex } = this.state;
 
 		return (
 			<div className="list row">
-				<div className="col-md-8">
+				{/* Search Bar */}
+                <div className="col-md-8">
 					<div className="input-group mb-3">
 						<input
 							type="text"
@@ -138,7 +140,8 @@ export default class ItemsList extends Component<Props, State> {
 				</div>
 				<div className="col-md-6">
 					<h4>Items List</h4>
-
+                    {/* This should be the list of all the items */}
+                    {/* TODO: Look into pagination to see about not displaying all at once */}
 					<ul className="list-group">
 						{items &&
 							items.map((item: ItemData, index: number) => (
@@ -164,6 +167,7 @@ export default class ItemsList extends Component<Props, State> {
 						Remove All
 					</button> */}
 				</div>
+                {/* This is the section that will render the details of the active item */}
 				<div className="col-md-6">
 					{currentItem ? (
 						<div>
@@ -213,7 +217,8 @@ export default class ItemsList extends Component<Props, State> {
 							</Link>
 						</div>
 					) : (
-						<div>
+						// If no item selected, prompt for selection
+                        <div>
 							<br />
 							<p>
 								Please click on an item to pull up its
