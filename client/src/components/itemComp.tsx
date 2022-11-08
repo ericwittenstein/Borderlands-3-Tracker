@@ -10,14 +10,17 @@ interface RouterProps {
 
 type Props = RouteComponentProps<RouterProps>;
 
+// state variable types for this component
 type State = {
 	currentItem: ItemData;
 	message: string;
 };
 
+// React component for detailed item page
 export default class Item extends Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
+        // bind the change events to the item props
 		this.onChangeName = this.onChangeName.bind(this);
 		this.onChangeType = this.onChangeType.bind(this);
 		this.onChangeElement = this.onChangeElement.bind(this);
@@ -28,6 +31,7 @@ export default class Item extends Component<Props, State> {
 		this.updateItem = this.updateItem.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
 
+        // initial state of the component
 		this.state = {
 			currentItem: {
 				id: null,
@@ -42,10 +46,12 @@ export default class Item extends Component<Props, State> {
 		};
 	}
 
+    // if component mounted successfully, retrieve the item's details
 	componentDidMount() {
 		this.getItem(this.props.match.params.id);
 	}
 
+    // trackers for value changes and assignments
 	onChangeName(e: ChangeEvent<HTMLInputElement>) {
 		const name = e.target.value;
 
@@ -124,6 +130,7 @@ export default class Item extends Component<Props, State> {
 		});
 	}
 
+    // function to get item by id
 	getItem(id: string) {
 		ItemDataService.findOne(id)
 			.then((response: any) => {
@@ -137,6 +144,7 @@ export default class Item extends Component<Props, State> {
 			});
 	}
 
+    // function to push the new info to the item at the existing item id
 	updateItem() {
 		ItemDataService.update(
 			this.state.currentItem,
