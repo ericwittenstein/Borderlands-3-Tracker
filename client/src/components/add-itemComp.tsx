@@ -129,7 +129,7 @@ export default class AddItem extends Component<Props, State> {
 		} = this.state;
 
 		// check if submitted. if false, show add form; if true, show add item button to reload form
-		// TODO: change some fields to dropdown menus
+		// TODO: change some fields to dropdown menus, radio buttons, etc for input control
 		return (
 			<div className="submit-form">
 				{submitted ? (
