@@ -25,6 +25,11 @@ class ItemDataService {
     deleteAll(){
         return http.delete<any>(`/items`);
     }
+
+    findByName(name: string){
+        return http.get<Array<ItemData>>(`/items?name=${name}`);
+    }
+
 }
 
 export default new ItemDataService();

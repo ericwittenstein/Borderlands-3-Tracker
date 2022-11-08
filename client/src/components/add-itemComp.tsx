@@ -22,7 +22,7 @@ export default class AddItem extends Component<Props, State> {
 		this.saveItem = this.saveItem.bind(this);
 		this.newItem = this.newItem.bind(this);
 
-		// initial state of the item
+		// initial state of the component
 		this.state = {
 			id: null,
 			name: "",
