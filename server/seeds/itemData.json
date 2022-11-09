@@ -1,0 +1,34 @@
+[
+	{
+		"name": "Hellwalker",
+		"item_type": "Shotgun, Jacobs",
+		"element": "Incendiary",
+		"effect": "Low reload time, massive damage, inverted pentagram spread pattern, guitar noise on fire",
+		"notes": "Incredible damage output, great with Amara due to elemental damage, downside is always incendiary",
+		"recommended": "Yes"
+	},
+	{
+		"name": "Amazing Grace",
+		"item_type": "Pistol, Jacobs",
+		"element": "Neutral",
+		"effect": "Bullet added to mag on crit hit",
+		"notes": "Depending on level, high accuracy score makes this a possible replacement weapon for a sniper rifle",
+		"recommended": "Yes"
+	},
+	{
+		"name": "Chocolate Thunder",
+		"item_type": "Grenade",
+		"element": "Neutral",
+		"effect": "It's an exploding piece of cake with high damage",
+		"notes": "Very high damage output makes it great for builds that maximize grenade usage (Zane drones IIRC?)",
+		"recommended": "Eh"
+	},
+	{
+		"name": "Cutsman",
+		"item_type": "Submachine Gun, Maliwan",
+		"element": "Incendiary, Shock, or Corrosive",
+		"effect": "Fires two explosive orbs that widen horizontally along their travel path, tethered by a damaging laser beam, always spawned with blade attachement",
+		"notes": "Fires a clothesline that dissipates if the endpoints hit an enemy or terrain",
+		"recommended": "Not really"
+	}
+]

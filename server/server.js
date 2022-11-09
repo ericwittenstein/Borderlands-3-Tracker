@@ -28,10 +28,8 @@ app.get("/", (req, res) => {
 
 app.use(routes);
 
-const Item = require("./models/models");
-
 // turn on connection to db and server
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
 	app.listen(PORT, () => {
 		console.log(`Server is now running on port http://localhost:${PORT}`);
 	});

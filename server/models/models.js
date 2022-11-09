@@ -14,7 +14,7 @@ Item.init(
 		},
 		name: {
 			type: DataTypes.STRING,
-            unique: true,
+			unique: true,
 			allowNull: false,
 		},
 		item_type: {
@@ -29,16 +29,16 @@ Item.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-        notes: {
-            type: DataTypes.STRING,
-        },
+		notes: {
+			type: DataTypes.STRING,
+		},
 		recommended: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
 	},
 	{
-		sequelize: sequelize,
+		sequelize,
 		timestamps: true,
 		freezeTableName: true,
 		underscored: true,
@@ -46,4 +46,4 @@ Item.init(
 	}
 );
 
-module.exports = Item;
+module.exports = { Item };

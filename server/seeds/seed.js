@@ -1,17 +1,17 @@
 // create the connections to the models
-const sequelize = require('../config/connection');
-const { Item } = require('../models');
+const sequelize = require("../config/connection");
+const { Item } = require("../models/models");
 
 // create the connections to the seed data
-const itemData = require('./itemData.json');
+const itemData = require("./itemData.json");
 
 // seed function
 const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
+	await sequelize.sync({ force: true });
 
-  const items = await Item.bulkCreate(itemData);
+	const items = await Item.bulkCreate(itemData);
 
-  process.exit(0);
+	process.exit(0);
 };
 
 seedDatabase();
