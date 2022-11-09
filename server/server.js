@@ -1,7 +1,8 @@
 // imports
 const express = require("express");
-const routes = require("./routes/routesIndex");
+const routes = require("./routes");
 const sequelize = require("./config/connection");
+const Item = require("./models/modelIndex");
 
 // cors provides middleware request authentication and options
 const cors = require("cors");

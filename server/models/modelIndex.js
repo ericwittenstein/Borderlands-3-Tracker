@@ -46,4 +46,4 @@ Item.init(
 	}
 );
 
-module.exports = { Item };
+module.exports = Item ;

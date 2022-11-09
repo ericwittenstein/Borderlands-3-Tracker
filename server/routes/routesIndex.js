@@ -1,12 +1,24 @@
-const items = require("../controllers/api/apiIndex")
-const router = require("express").Router();
+module.exports = (app) => {
+	const items = require("../controllers/controllerIndex");
+	var router = require("express").Router();
 
-module.exports = app => {
-    router.post("/", items.create);
-    router.get("/", items.findAll);
-    router.get("/:id", items.findOne);
-    router.put("/:id", items.update);
-    router.delete("/:", items.deleteAll);
-    router.delete("/:id", items.deleteOne);
-    app.use("/api/items", router);
-}
+	// create item route
+	router.post("/", items.create);
+
+	// retrieve all items route
+	router.get("/", items.findAll);
+
+	// retrieve one item
+	router.get("/:id", items.findOne);
+
+	// update an item
+	router.put("/:id", items.update);
+
+	// delete all items
+	router.delete("/:", items.deleteAll);
+
+	// delete one item
+	router.delete("/:id", items.deleteOne);
+
+	app.use("/api/items", router);
+};
