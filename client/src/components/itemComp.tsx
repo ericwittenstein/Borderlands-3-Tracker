@@ -20,7 +20,7 @@ type State = {
 export default class Item extends Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
-        // bind the change events to the item props
+		// bind the change events to the item props
 		this.onChangeName = this.onChangeName.bind(this);
 		this.onChangeType = this.onChangeType.bind(this);
 		this.onChangeElement = this.onChangeElement.bind(this);
@@ -31,7 +31,7 @@ export default class Item extends Component<Props, State> {
 		this.updateItem = this.updateItem.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
 
-        // initial state of the component
+		// initial state of the component
 		this.state = {
 			currentItem: {
 				id: null,
@@ -46,12 +46,12 @@ export default class Item extends Component<Props, State> {
 		};
 	}
 
-    // if component mounted successfully, retrieve the item's details
+	// if component mounted successfully, retrieve the item's details
 	componentDidMount() {
 		this.getItem(this.props.match.params.id);
 	}
 
-    // trackers for value changes and assignments
+	// trackers for value changes and assignments
 	onChangeName(e: ChangeEvent<HTMLInputElement>) {
 		const name = e.target.value;
 
@@ -130,7 +130,7 @@ export default class Item extends Component<Props, State> {
 		});
 	}
 
-    // function to get item by id
+	// function to get item by id
 	getItem(id: string) {
 		ItemDataService.findOne(id)
 			.then((response: any) => {
@@ -144,7 +144,7 @@ export default class Item extends Component<Props, State> {
 			});
 	}
 
-    // function to push the new info to the item at the existing item id
+	// function to push the new info to the item at the existing item id
 	updateItem() {
 		ItemDataService.update(
 			this.state.currentItem,
@@ -161,17 +161,114 @@ export default class Item extends Component<Props, State> {
 			});
 	}
 
-    // DO NOT USE UNLESS ABSOLUTELY NECESSARY
-    deleteItem(){
-        ItemDataService.deleteOne(this.state.currentItem.id).then((response: any)=> {
-            console.log(response.data);
-            this.props.history.push("/items");
-        }).catch((e:Error) => {
-            console.log(e);
-        });
-    }
+	// DO NOT USE UNLESS ABSOLUTELY NECESSARY
+	deleteItem() {
+		ItemDataService.deleteOne(this.state.currentItem.id)
+			.then((response: any) => {
+				console.log(response.data);
+				this.props.history.push("/items");
+			})
+			.catch((e: Error) => {
+				console.log(e);
+			});
+	}
 
-    // render(){
-        
-    // }
+	render() {
+		const { currentItem } = this.state;
+
+		return (
+			<div>
+				{currentItem ? (
+					<div className="edit-form">
+						<h4>Item</h4>
+						<form>
+							<div className="form-group">
+								<label htmlFor="name">Name</label>
+								<input
+									type="text"
+									className="form-control"
+									id="name"
+									value={currentItem.name}
+									onChange={this.onChangeName}
+								/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="item_type">Item Type</label>
+								<input
+									type="text"
+									className="form-control"
+									id="item_type"
+									value={currentItem.item_type}
+									onChange={this.onChangeType}
+								/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="element">Element</label>
+								<input
+									type="text"
+									className="form-control"
+									id="element"
+									value={currentItem.element}
+									onChange={this.onChangeElement}
+								/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="effect">Effect</label>
+								<input
+									type="text"
+									className="form-control"
+									id="effect"
+									value={currentItem.effect}
+									onChange={this.onChangeEffect}
+								/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="notes">Notes</label>
+								<input
+									type="text"
+									className="form-control"
+									id="notes"
+									value={currentItem.notes}
+									onChange={this.onChangeNotes}
+								/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="recommended">
+									Recommended?
+								</label>
+								<input
+									type="text"
+									className="form-control"
+									id="recommended"
+									value={currentItem.recommended}
+									onChange={this.onChangeRec}
+								/>
+							</div>
+						</form>
+
+						<button
+							className="badge badge-danger mr-2"
+							onClick={this.deleteItem}
+						>
+							DELETE
+						</button>
+
+						<button
+							type="submit"
+							className="badge badge-success"
+							onClick={this.updateItem}
+						>
+							UPDATE
+						</button>
+						<p>{this.state.message}</p>
+					</div>
+				) : (
+					<div>
+						<br />
+						<p>Please click on an item</p>
+					</div>
+				)}
+			</div>
+		);
+	}
 }

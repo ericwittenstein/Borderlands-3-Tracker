@@ -211,15 +211,15 @@ export default class AddItem extends Component<Props, State> {
 							/>
 						</div>
 						<div className="form-group">
-							<label htmlFor="rec">Recommended</label>
+							<label htmlFor="recommended">Recommended</label>
 							<input
 								type="text"
 								className="form-control"
-								id="rec"
+								id="recommended"
 								required
 								value={recommended}
 								onChange={this.onChangeRec}
-								name="rec"
+								name="recommended"
 								placeholder="Is this item recommended or not?"
 							/>
 						</div>
