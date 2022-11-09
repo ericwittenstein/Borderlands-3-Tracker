@@ -6,13 +6,12 @@ class Item extends Model {}
 // sequelize schema definition of item table
 Item.init(
 	{
-		// id: {
-		// 	type: DataTypes.INTEGER,
-		// 	primaryKey: true,
-		// 	allowNull: false,
-		// 	autoIncrement: true,
-			
-		// },
+		id: {
+			type: DataTypes.INTEGER,
+			primaryKey: true,
+			allowNull: false,
+			autoIncrement: true,
+		},
 		name: {
 			type: DataTypes.STRING,
             unique: true,
@@ -39,7 +38,7 @@ Item.init(
 		},
 	},
 	{
-		sequelize,
+		sequelize: sequelize,
 		timestamps: true,
 		freezeTableName: true,
 		underscored: true,
