@@ -10,36 +10,37 @@ import ItemsList from "./components/items-listComp";
 
 class App extends Component {
 	render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/items"} className="navbar-brand">
-            EWITT
-          </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/items"} className="nav-link">
-                Items
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Add Item
-              </Link>
-            </li>
-          </div>
-        </nav>
+		return (
+			<div>
+				<nav className="navbar navbar-expand navbar-dark bg-dark">
+					<Link to={"/items"} className="navbar-brand">
+						EWITT
+					</Link>
+					<div className="navbar-nav mr-auto">
+						<li className="nav-item">
+							<Link to={"/items"} className="nav-link">
+								Items
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to={"/add"} className="nav-link">
+								Add Item
+							</Link>
+						</li>
+					</div>
+				</nav>
 
-        <div className="container mt-3">
-          <Switch>
-            <Route path="/items" component={ItemsList}/>
-            <Route path="/add" component={AddItem}/>
-            <Route path="/items/:id" component={Item}/>
-          </Switch>
-        </div>
-      </div>
-    )
-  }
+				<div className="container mt-3">
+					<Switch>
+						<Route path="/" component={ItemsList} />
+						<Route path="/items" component={ItemsList} />
+						<Route path="/add" component={AddItem} />
+						<Route path="/items/:id" component={Item} />
+					</Switch>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;
