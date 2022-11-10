@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 var corsOptions = {
-	origin: "http://localhost:3000",
+	origin: "https://bl3tracker.herokuapp.com/",
 };
 
 app.use(cors(corsOptions));
