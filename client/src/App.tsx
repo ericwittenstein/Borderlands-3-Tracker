@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
 
-import AddItem from "./components/add-itemComp";
+import AddItem from "./components/add-item.component";
 import Item from "./components/itemComp";
 import ItemsList from "./components/items-listComp";
 

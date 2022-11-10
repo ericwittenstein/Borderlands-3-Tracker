@@ -18,7 +18,7 @@ export default class AddItem extends Component<Props, State> {
 		this.onChangeElement = this.onChangeElement.bind(this);
 		this.onChangeEffect = this.onChangeEffect.bind(this);
 		this.onChangeNotes = this.onChangeNotes.bind(this);
-		this.onChangeRec = this.onChangeRec.bind(this);
+		// this.onChangeRec = this.onChangeRec.bind(this);
 		this.saveItem = this.saveItem.bind(this);
 		this.newItem = this.newItem.bind(this);
 
@@ -30,7 +30,7 @@ export default class AddItem extends Component<Props, State> {
 			element: "",
 			effect: "",
 			notes: "",
-			recommended: "",
+			recommended: false,
 			submitted: false
 		};
 	}
@@ -66,11 +66,11 @@ export default class AddItem extends Component<Props, State> {
 		});
 	}
 
-	onChangeRec(e: ChangeEvent<HTMLInputElement>) {
-		this.setState({
-			recommended: e.target.value
-		});
-	}
+	// onChangeRec(e: ChangeEvent<HTMLInputElement>) {
+	// 	this.setState({
+	// 		recommended: e.target.value
+	// 	});
+	// }
 
 	// item submission function
 	saveItem() {
@@ -79,12 +79,12 @@ export default class AddItem extends Component<Props, State> {
 			item_type: this.state.item_type,
 			element: this.state.element,
 			effect: this.state.effect,
-			notes: this.state.notes,
-			recommended: this.state.recommended
+			notes: this.state.notes
+			// recommended: this.state.recommended
 		};
 
 		ItemDataService.create(data)
-			.then((response) => {
+			.then((response: any) => {
 				this.setState({
 					id: response.data.id,
 					name: response.data.name,
@@ -111,22 +111,15 @@ export default class AddItem extends Component<Props, State> {
 			element: "",
 			effect: "",
 			notes: "",
-			recommended: "",
+			recommended: false,
 			submitted: false
 		});
 	}
 
 	// function to handle rendering of AddItem component
 	render() {
-		const {
-			name,
-			item_type,
-			element,
-			effect,
-			notes,
-			recommended,
-			submitted
-		} = this.state;
+		const { name, item_type, element, effect, notes, submitted } =
+			this.state;
 
 		// check if submitted. if false, show add form; if true, show add item button to reload form
 		// TODO: change some fields to dropdown menus, radio buttons, etc for input control
@@ -210,7 +203,7 @@ export default class AddItem extends Component<Props, State> {
 								placeholder="Notes, good for, bad for, etc."
 							/>
 						</div>
-						<div className="form-group">
+						{/* <div className="form-group">
 							<label htmlFor="recommended">Recommended</label>
 							<input
 								type="text"
@@ -222,7 +215,7 @@ export default class AddItem extends Component<Props, State> {
 								name="recommended"
 								placeholder="Is this item recommended or not?"
 							/>
-						</div>
+						</div> */}
 
 						<button
 							onClick={this.saveItem}
