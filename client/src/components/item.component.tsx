@@ -26,7 +26,7 @@ export default class Item extends Component<Props, State> {
 		this.onChangeElement = this.onChangeElement.bind(this);
 		this.onChangeEffect = this.onChangeEffect.bind(this);
 		this.onChangeNotes = this.onChangeNotes.bind(this);
-		this.onChangeRec = this.onChangeRec.bind(this);
+		this.updateRecommended = this.updateRecommended.bind(this);
 		this.getItem = this.getItem.bind(this);
 		this.updateItem = this.updateItem.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
@@ -40,7 +40,7 @@ export default class Item extends Component<Props, State> {
 				element: "",
 				effect: "",
 				notes: "",
-				recommended: ""
+				recommended: false
 			},
 			message: ""
 		};
@@ -117,22 +117,36 @@ export default class Item extends Component<Props, State> {
 		});
 	}
 
-	onChangeRec(e: ChangeEvent<HTMLInputElement>) {
-		const recommended = e.target.value;
+	updateRecommended(status: boolean) {
+		const data: ItemData = {
+			id: this.state.currentItem.id,
+			name: this.state.currentItem.name,
+			item_type: this.state.currentItem.item_type,
+			element: this.state.currentItem.element,
+			effect: this.state.currentItem.effect,
+			notes: this.state.currentItem.notes,
+			recommended: status
+		};
 
-		this.setState((prevState) => {
-			return {
-				currentItem: {
-					...prevState.currentItem,
-					recommended: recommended
-				}
-			};
-		});
+		ItemDataService.update(data, this.state.currentItem.id)
+			.then((response: any) => {
+				this.setState((prevState) => ({
+					currentItem: {
+						...prevState.currentItem,
+						recommended: status
+					},
+					message: "Item updated successfully"
+				}));
+				console.log(response.data);
+			})
+			.catch((e: Error) => {
+				console.log(e);
+			});
 	}
 
 	// function to get item by id
 	getItem(id: string) {
-		ItemDataService.findOne(id)
+		ItemDataService.get(id)
 			.then((response: any) => {
 				this.setState({
 					currentItem: response.data
@@ -163,7 +177,7 @@ export default class Item extends Component<Props, State> {
 
 	// DO NOT USE UNLESS ABSOLUTELY NECESSARY
 	deleteItem() {
-		ItemDataService.deleteOne(this.state.currentItem.id)
+		ItemDataService.delete(this.state.currentItem.id)
 			.then((response: any) => {
 				console.log(response.data);
 				this.props.history.push("/items");
@@ -233,18 +247,28 @@ export default class Item extends Component<Props, State> {
 								/>
 							</div>
 							<div className="form-group">
-								<label htmlFor="recommended">
-									Recommended?
+								<label>
+									<strong>Recommended?</strong>
 								</label>
-								<input
-									type="text"
-									className="form-control"
-									id="recommended"
-									value={currentItem.recommended}
-									onChange={this.onChangeRec}
-								/>
+								{currentItem.recommended ? "YES" : "NO"}
 							</div>
 						</form>
+
+						{currentItem.recommended ? (
+							<button
+								className="badge badge-primary mr-2"
+								onClick={() => this.updateRecommended(false)}
+							>
+								NO
+							</button>
+						) : (
+							<button
+								className="badge badge-primary mr-2"
+								onClick={() => this.updateRecommended(true)}
+							>
+								YES
+							</button>
+						)}
 
 						<button
 							className="badge badge-danger mr-2"

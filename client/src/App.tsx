@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
 
 import AddItem from "./components/add-item.component";
-import Item from "./components/itemComp";
+import Item from "./components/item.component";
 import ItemsList from "./components/items-list.component";
 
 class App extends Component {
