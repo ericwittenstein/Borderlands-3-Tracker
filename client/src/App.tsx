@@ -6,7 +6,7 @@ import "./App.css";
 
 import AddItem from "./components/add-item.component";
 import Item from "./components/itemComp";
-import ItemsList from "./components/items-listComp";
+import ItemsList from "./components/items-list.component";
 
 class App extends Component {
 	render() {

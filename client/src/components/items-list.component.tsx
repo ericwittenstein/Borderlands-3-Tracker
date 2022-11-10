@@ -50,8 +50,8 @@ export default class ItemsList extends Component<Props, State> {
 
 	// function to retrieve list of items
 	retrieveItems() {
-		ItemDataService.findAll()
-			.then((response) => {
+		ItemDataService.getAll()
+			.then((response: any) => {
 				this.setState({
 					items: response.data
 				});
@@ -211,7 +211,7 @@ export default class ItemsList extends Component<Props, State> {
 									<label>
 										<strong>Recommended:</strong>
 									</label>{" "}
-									{currentItem.recommended}
+									{currentItem.recommended ? "YES" : "NO"}
 								</div>
 
 								<Link
