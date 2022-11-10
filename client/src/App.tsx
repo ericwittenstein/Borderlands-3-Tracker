@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "./App.css";
+
 
 import AddItem from "./components/add-itemComp";
 import Item from "./components/itemComp";
