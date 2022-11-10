@@ -2,6 +2,7 @@
 	"name": "borderlands3tracker",
 	"version": "1.0.0",
 	"main": "server/server.js",
+	"homepage": "https://bl3tracker.herokuapp.com/",
 	"license": "MIT",
 	"scripts": {
 		"start": "node server/server.js",
