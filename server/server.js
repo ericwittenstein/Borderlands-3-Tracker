@@ -23,11 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // test route
-app.get("/", (req, res) => {
-	res.json({ message: "Welcome!" });
-});
+// app.get("/", (req, res) => {
+// 	res.json({ message: "Welcome!" });
+// });
 
 app.use(routes);
+// require("./routes/routesIndex")(app);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {

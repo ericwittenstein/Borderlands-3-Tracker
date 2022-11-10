@@ -1,6 +1,6 @@
 // create the connections to the models
 const sequelize = require("../config/connection");
-const { Item } = require("../models/models");
+const Item = require("../models/modelIndex");
 
 // create the connections to the seed data
 const itemData = require("./itemData.json");

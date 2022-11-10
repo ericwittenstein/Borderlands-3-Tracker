@@ -1,24 +1,27 @@
-module.exports = (app) => {
-	const items = require("../controllers/controllerIndex");
-	var router = require("express").Router();
+// const app = require("express");
+const router = require("express").Router();
+const itemsRoutes = require("../controllers/controllerIndex");
 
-	// create item route
-	router.post("/", items.create);
+router.use("/api", itemsRoutes);
 
-	// retrieve all items route
-	router.get("/", items.findAll);
+// // create item route
+// router.post("/", itemsRoutes.create);
 
-	// retrieve one item
-	router.get("/:id", items.findOne);
+// // retrieve all itemsRoutes route
+// router.get("/", itemsRoutes.findAllItems);
 
-	// update an item
-	router.put("/:id", items.update);
+// // retrieve one item
+// router.get("/:id", itemsRoutes.findOne);
 
-	// delete all items
-	router.delete("/:", items.deleteAll);
+// // update an item
+// router.put("/:id", itemsRoutes.update);
 
-	// delete one item
-	router.delete("/:id", items.deleteOne);
+// // delete all itemsRoutes
+// router.delete("/", itemsRoutes.deleteAll);
 
-	app.use("/api/items", router);
-};
+// // delete one item
+// router.delete("/:id", itemsRoutes.deleteOne);
+
+// 	app.use("/api/itemsRoutes", router);
+
+module.exports = router;
