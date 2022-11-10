@@ -17,9 +17,8 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-// configure express routing to point to public folder
-const publicPath = path.join(__dirname, "..", "public");
-app.use(express.static(publicPath));
+// configure express routing to point to correct folder
+app.use(express.static(path.join(__dirname, "client/build")));
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -31,9 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 // app.get("/", (req, res) => {
 // 	res.json({ message: "Welcome!" });
 // });
-// app.get("*", (req, res) => {
-// 	res.sendFile(path.join(publicPath, "index.html"));
-// });
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
 
 app.use(routes);
 
