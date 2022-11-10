@@ -1,5 +1,5 @@
 import { Component, ChangeEvent } from "react";
-import ItemDataService from "../services/itemDataService";
+import ItemDataService from "../services/item.service";
 import { Link } from "react-router-dom";
 import ItemData from "../types/item.type";
 
