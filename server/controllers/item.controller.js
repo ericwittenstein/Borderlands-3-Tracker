@@ -92,7 +92,7 @@ exports.update = (req, res) => {
 };
 
 // delete item by id
-exports.delete = (req, res) => {
+exports.deleteOne = (req, res) => {
 	const id = req.params.id;
 
 	Item.destroy({

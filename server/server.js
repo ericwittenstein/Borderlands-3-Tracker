@@ -1,8 +1,8 @@
 // imports
 const express = require("express");
-const routes = require("./routes/routesIndex");
+// const routes = require("./routes/routesIndex");
 // const sequelize = require("./config/connection");
-const Item = require("./models/modelIndex");
+// const Item = require("./models/modelIndex");
 const db = require("./models/index")
 const path = require("path");
 
@@ -37,7 +37,8 @@ app.get("/", (req, res) => {
 	res.json({ message: "Welcome!" });
 });
 
-app.use(routes);
+// app.use(routes);
+require("./routes/item.routes")(app);
 
 // turn on connection to db and server
 db.sequelize.sync({ force: false }).then(() => {
