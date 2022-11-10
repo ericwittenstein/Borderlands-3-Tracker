@@ -39,16 +39,18 @@
 
 .list {
   text-align: left;
-  max-width: 750px;
+  max-width: 25%;
   margin: auto;
 }
 
 .submit-form {
-  max-width: 300px;
+  max-width: 75%;
+  min-width: 25%;
   margin: auto;
 }
 
 .edit-form {
-  max-width: 300px;
+  max-width: 75%;
+  min-width: 25%;
   margin: auto;
 }
