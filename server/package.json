@@ -23,5 +23,6 @@
 	"devDependencies": {
 		"nodemon": "^2.0.2",
 		"concurrently": "^7.0.0"
-	}
+	},
+	"homepage": "https://bl3tracker.herokuapp.com/"
 }

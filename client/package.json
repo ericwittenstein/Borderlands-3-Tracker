@@ -53,5 +53,6 @@
 		"prettier": "^2.7.1",
 		"web-vitals": "^3.0.4",
 		"eslint-config-react-app": "^7.0.1"
-	}
+	},
+	"homepage": "https://bl3tracker.herokuapp.com/"
 }
