@@ -34,7 +34,7 @@ npm i
 To begin running the program, run the following command in the console/command line:
 
 ```
-npm run develop
+npm run start
 ```
 
 ## License
@@ -47,7 +47,11 @@ https://github.com/ericwittenstein/Borderlands-3-Tracker
 
 ## Project Demo
 
-    **_ THIS IS A PLACEHOLDER FOR AN IMAGE OR SCREEN RECORDING OF THE PROJECT _**
+![App Demo1](client/build/AppDemo1.png)
+
+![App Demo2](client/build/AppDemo2.png)
+
+![App Demo3](client/build/AppDemo3.png)
 
 ## Contributing
 

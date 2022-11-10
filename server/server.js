@@ -3,7 +3,7 @@ const express = require("express");
 // const routes = require("./routes/routesIndex");
 // const sequelize = require("./config/connection");
 // const Item = require("./models/modelIndex");
-const db = require("./models")
+const db = require("./models");
 const path = require("path");
 
 // cors provides middleware request authentication and options
@@ -19,12 +19,11 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // configure express routing to point to correct folder
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "../client/build")));
-	app.get("/*", (req, res) => {
-		res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-	});
-}
+
+app.use(express.static(path.join(__dirname, "/views")));
+app.get("/", (req, res) => {
+	res.sendFile(path.join(__dirname, "/views", "index.html"));
+});
 
 // parse requests of content-type - application/json
 app.use(express.json());
