@@ -32,9 +32,12 @@ class App extends Component {
 
 				<div className="container mt-3">
 					<Switch>
-						<Route path="/" component={ItemsList} />
-						<Route path="/items" component={ItemsList} />
-						<Route path="/add" component={AddItem} />
+						<Route
+							exact
+							path={["/", "/items"]}
+							component={ItemsList}
+						/>
+						<Route exact path="/add" component={AddItem} />
 						<Route path="/items/:id" component={Item} />
 					</Switch>
 				</div>

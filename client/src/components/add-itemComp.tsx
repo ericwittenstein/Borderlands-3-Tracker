@@ -1,6 +1,6 @@
 import { Component, ChangeEvent } from "react";
 import ItemDataService from "../services/itemDataService";
-import ItemData from "../types/itemTypes";
+import ItemData from "../types/item.type";
 
 type Props = {};
 

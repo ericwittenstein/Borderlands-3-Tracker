@@ -1,5 +1,5 @@
 import http from "../http-common";
-import ItemData from "../types/itemTypes";
+import ItemData from "../types/item.type";
 
 class ItemDataService {
 	findAll() {
@@ -10,26 +10,25 @@ class ItemDataService {
 		return http.get<ItemData>(`/${id}`);
 	}
 
-    create(data: ItemData){
-        return http.post<ItemData>("/", data);
-    }
+	create(data: ItemData) {
+		return http.post<ItemData>("/", data);
+	}
 
-    update( data: ItemData, id: any){
-        return http.put<any>(`/${id}`, data);
-    }
+	update(data: ItemData, id: any) {
+		return http.put<any>(`/${id}`, data);
+	}
 
-    deleteOne(id: any){
-        return http.delete<any>(`/${id}`);
-    }
+	deleteOne(id: any) {
+		return http.delete<any>(`/${id}`);
+	}
 
-    deleteAll(){
-        return http.delete<any>(`/`);
-    }
+	deleteAll() {
+		return http.delete<any>(`/`);
+	}
 
-    findByName(name: string){
-        return http.get<Array<ItemData>>(`/?name=${name}`);
-    }
-
+	findByName(name: string) {
+		return http.get<Array<ItemData>>(`/?name=${name}`);
+	}
 }
 
 export default new ItemDataService();

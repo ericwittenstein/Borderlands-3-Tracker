@@ -2,7 +2,7 @@ import { Component, ChangeEvent } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import ItemDataService from "../services/itemDataService";
-import ItemData from "../types/itemTypes";
+import ItemData from "../types/item.type";
 
 interface RouterProps {
 	id: string;

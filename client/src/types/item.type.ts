@@ -5,5 +5,5 @@ export default interface ItemData {
 	element: string;
 	effect: string;
 	notes?: string;
-	recommended: string;
-}
+	recommended: boolean;
+};
