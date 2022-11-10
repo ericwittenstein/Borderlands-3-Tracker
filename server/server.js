@@ -31,9 +31,9 @@ app.use(express.urlencoded({ extended: true }));
 // app.get("/", (req, res) => {
 // 	res.json({ message: "Welcome!" });
 // });
-app.get("*", (req, res) => {
-	res.sendFile(path.join(publicPath, "index.html"));
-});
+// app.get("*", (req, res) => {
+// 	res.sendFile(path.join(publicPath, "index.html"));
+// });
 
 app.use(routes);
 
