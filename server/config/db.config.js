@@ -1,10 +1,10 @@
 require("dotenv").config();
 
 module.exports={
-    HOST: "h1use0ulyws4lqr1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    USER: "fwne4iixuxuao1du",
-    PASSWORD: "lsnga4olke0o31bb",
-    DB: "ovl7po598gtjp8qu",
+    HOST: process.env.DB_HOST,
+    USER:  process.env.DB_USER,
+    PASSWORD:  process.env.DB_PASSWORD,
+    DB:  process.env.DB_NAME,
     dialect: "mysql",
     pool: {
         max: 5,
