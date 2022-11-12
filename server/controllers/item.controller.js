@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // create and save new item
 exports.create = (req, res) => {
 	// validate request
-	if (!req.body.name) {
+	if (!req.name) {
 		res.status(400).send({
 			message: "Needs to have a name!",
 		});
