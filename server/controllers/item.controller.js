@@ -3,7 +3,7 @@ const Item = db.items;
 const Op = db.Sequelize.Op;
 
 // create and save new item
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
 	// validate request
 	if (!req.body.name) {
 		res.status(400).send({
@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
 		// recommended: req.body.recommended ? req.body.recommended : false,
 	};
 
-	await Item.create(item)
+	Item.create(item)
 		.then((data) => {
 			res.status(200).send(data);
 		})
@@ -31,6 +31,7 @@ exports.create = async (req, res) => {
 				message: `Something prevented the item from being created: ${err}`,
 			});
 		});
+	return;
 };
 
 // retrieve all items from db
