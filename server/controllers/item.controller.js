@@ -31,15 +31,14 @@ exports.create = (req, res) => {
 				message: `Something prevented the item from being created: ${err}`,
 			});
 		});
-	return;
 };
 
 // retrieve all items from db
-exports.findAll = async (req, res) => {
+exports.findAll = (req, res) => {
 	const name = req.query.name;
 	var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
 
-	await Item.findAll({ where: condition })
+	Item.findAll({ where: condition })
 		.then((data) => {
 			res.status(200).json(data);
 		})
@@ -51,10 +50,10 @@ exports.findAll = async (req, res) => {
 };
 
 // find one item by id
-exports.findOne = async (req, res) => {
+exports.findOne = (req, res) => {
 	const id = req.params.id;
 
-	await Item.findByPk(id)
+	Item.findByPk(id)
 		.then((data) => {
 			if (data) {
 				res.status(200).send(data);
@@ -72,10 +71,10 @@ exports.findOne = async (req, res) => {
 };
 
 // update item by id
-exports.update = async (req, res) => {
+exports.update = (req, res) => {
 	const id = req.params.id;
 
-	await Item.update(req.body, {
+	Item.update(req.body, {
 		where: { id: id },
 	})
 		.then((num) => {
@@ -93,10 +92,10 @@ exports.update = async (req, res) => {
 };
 
 // delete item by id
-exports.deleteOne = async (req, res) => {
+exports.deleteOne = (req, res) => {
 	const id = req.params.id;
 
-	await Item.destroy({
+	Item.destroy({
 		where: { id: id },
 	})
 		.then((num) => {
@@ -114,8 +113,8 @@ exports.deleteOne = async (req, res) => {
 };
 
 // delete all items
-exports.deleteAll = async (req, res) => {
-	await Item.destroy({
+exports.deleteAll = (req, res) => {
+	Item.destroy({
 		where: {},
 		truncate: false,
 	})
@@ -127,8 +126,8 @@ exports.deleteAll = async (req, res) => {
 		});
 };
 
-exports.findAllRecommended = async (req, res) => {
-	await Item.findAll({ where: { recommended: true } })
+exports.findAllRecommended = (req, res) => {
+	Item.findAll({ where: { recommended: true } })
 		.then((data) => {
 			res.status(200).send(data);
 		})
