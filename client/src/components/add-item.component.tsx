@@ -73,7 +73,7 @@ export default class AddItem extends Component<Props, State> {
 	// }
 
 	// item submission function
-	saveItem() {
+	async saveItem() {
 		const data: ItemData = {
 			name: this.state.name,
 			item_type: this.state.item_type,
@@ -82,8 +82,8 @@ export default class AddItem extends Component<Props, State> {
 			notes: this.state.notes
 			// recommended: this.state.recommended
 		};
-
-		ItemDataService.create(data)
+		console.log(data);
+		await ItemDataService.create(data)
 			.then((response: any) => {
 				this.setState({
 					id: response.data.id,

@@ -3,14 +3,14 @@ const Item = db.items;
 const Op = db.Sequelize.Op;
 
 // create and save new item
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
 	// validate request
-	// if (!req.body.name) {
-	// 	res.status(400).send({
-	// 		message: "Needs to have a name!",
-	// 	});
-	// 	return;
-	// }
+	if (!req.body.name) {
+		res.status(400).send({
+			message: "Needs to have a name!",
+		});
+		return;
+	}
 
 	// create new item
 	const item = {
@@ -19,10 +19,10 @@ exports.create = (req, res) => {
 		element: req.body.element,
 		effect: req.body.effect,
 		notes: req.body.notes,
-		recommended: req.body.recommended ? req.body.recommended : false,
+		// recommended: req.body.recommended ? req.body.recommended : false,
 	};
 
-	Item.create(item)
+	await Item.create(item)
 		.then((data) => {
 			res.status(200).send(data);
 		})
@@ -34,11 +34,11 @@ exports.create = (req, res) => {
 };
 
 // retrieve all items from db
-exports.findAll = (req, res) => {
+exports.findAll = async (req, res) => {
 	const name = req.query.name;
 	var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
 
-	Item.findAll({ where: condition })
+	await Item.findAll({ where: condition })
 		.then((data) => {
 			res.status(200).json(data);
 		})
@@ -50,10 +50,10 @@ exports.findAll = (req, res) => {
 };
 
 // find one item by id
-exports.findOne = (req, res) => {
+exports.findOne = async (req, res) => {
 	const id = req.params.id;
 
-	Item.findByPk(id)
+	await Item.findByPk(id)
 		.then((data) => {
 			if (data) {
 				res.status(200).send(data);
@@ -71,10 +71,10 @@ exports.findOne = (req, res) => {
 };
 
 // update item by id
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
 	const id = req.params.id;
 
-	Item.update(req.body, {
+	await Item.update(req.body, {
 		where: { id: id },
 	})
 		.then((num) => {
@@ -92,10 +92,10 @@ exports.update = (req, res) => {
 };
 
 // delete item by id
-exports.deleteOne = (req, res) => {
+exports.deleteOne = async (req, res) => {
 	const id = req.params.id;
 
-	Item.destroy({
+	await Item.destroy({
 		where: { id: id },
 	})
 		.then((num) => {
@@ -113,8 +113,8 @@ exports.deleteOne = (req, res) => {
 };
 
 // delete all items
-exports.deleteAll = (req, res) => {
-	Item.destroy({
+exports.deleteAll = async (req, res) => {
+	await Item.destroy({
 		where: {},
 		truncate: false,
 	})
@@ -126,8 +126,8 @@ exports.deleteAll = (req, res) => {
 		});
 };
 
-exports.findAllRecommended = (req, res) => {
-	Item.findAll({ where: { recommended: true } })
+exports.findAllRecommended = async (req, res) => {
+	await Item.findAll({ where: { recommended: true } })
 		.then((data) => {
 			res.status(200).send(data);
 		})
