@@ -1,28 +1,27 @@
-const app = require("express");
-const items = require("../controllers/item.controller.js");
-const router = require("express").Router();
+module.exports = (app) => {
+	const items = require("../controllers/item.controller.js");
+	const router = require("express").Router();
 
-// create new item
-router.post("/", items.create);
+	// create new item
+	router.post("/", items.create);
 
-// retrieve all items route
-router.get("/", items.findAll);
+	// retrieve all items route
+	router.get("/", items.findAll);
 
-// retrieve all recommended items
-router.get("/recommended", items.findAllRecommended);
+	// retrieve all recommended items
+	router.get("/recommended", items.findAllRecommended);
 
-// retrieve one item
-router.get("/:id", items.findOne);
+	// retrieve one item
+	router.get("/:id", items.findOne);
 
-// update an item
-router.put("/:id", items.update);
+	// update an item
+	router.put("/:id", items.update);
 
-// delete all items
-router.delete("/", items.deleteAll);
+	// delete all items
+	router.delete("/", items.deleteAll);
 
-// delete one item
-router.delete("/:id", items.deleteOne);
+	// delete one item
+	router.delete("/:id", items.deleteOne);
 
-app.use("/api/items", items);
-
-module.exports = router;
+	app.use("/api/items", router);
+};
