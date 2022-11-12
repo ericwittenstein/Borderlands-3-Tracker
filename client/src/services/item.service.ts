@@ -10,8 +10,8 @@ class ItemDataService {
 		return http.get<ItemData>(`/api/items/${id}`);
 	}
 
-	create(data: ItemData) {
-		return http.post<ItemData>("/api/items/", data);
+	async create(data: ItemData) {
+		return await http.post<ItemData>("/api/items/", data);
 	}
 
 	update(data: ItemData, id: any) {
