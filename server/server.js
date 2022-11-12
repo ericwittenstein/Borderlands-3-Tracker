@@ -42,6 +42,6 @@ require("./routes/item.routes")(app);
 // turn on connection to db and server
 db.sequelize.sync({ force: false }).then(() => {
 	app.listen(PORT, () => {
-		console.log(`Server is now running on port http://localhost:${PORT}`);
+		console.log(`Server is now running on port ${PORT}`);
 	});
 });
