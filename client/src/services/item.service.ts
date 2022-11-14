@@ -3,31 +3,31 @@ import ItemData from "../types/item.type";
 
 class ItemDataService {
 	getAll() {
-		return http.get<Array<ItemData>>("/api/items");
+		return http.get<Array<ItemData>>("/items");
 	}
 
 	get(id: string) {
-		return http.get<ItemData>(`/api/items/${id}`);
+		return http.get<ItemData>(`/items/${id}`);
 	}
 
 	create(data: ItemData) {
-		return http.post<ItemData>("/api/items", data);
+		return http.post<ItemData>("/items", data);
 	}
 
 	update(data: ItemData, id: any) {
-		return http.put<any>(`/api/items/${id}`, data);
+		return http.put<any>(`/items/${id}`, data);
 	}
 
 	delete(id: any) {
-		return http.delete<any>(`/api/items/${id}`);
+		return http.delete<any>(`/items/${id}`);
 	}
 
 	deleteAll() {
-		return http.delete<any>(`/api/items`);
+		return http.delete<any>(`/items`);
 	}
 
 	findByName(name: string) {
-		return http.get<Array<ItemData>>(`/api/items/?name=${name}`);
+		return http.get<Array<ItemData>>(`/items/?name=${name}`);
 	}
 }
 

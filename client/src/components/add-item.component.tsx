@@ -88,7 +88,7 @@ export default class AddItem extends Component<Props, State> {
 				this.setState({
 					id: response.data.id,
 					name: response.data.name,
-					item_type: response.data.id,
+					item_type: response.data.item_type,
 					element: response.data.element,
 					effect: response.data.effect,
 					notes: response.data.notes,
