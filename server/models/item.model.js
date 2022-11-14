@@ -17,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		recommended: {
 			type: Sequelize.BOOLEAN,
-		},
+		}
 	});
 
 	return Item;

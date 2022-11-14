@@ -5,7 +5,7 @@ import ItemData from "../types/item.type";
 type Props = {};
 
 type State = ItemData & {
-	submitted: boolean;
+	submitted: boolean
 };
 
 // react component that will function as the add form

@@ -1,13 +1,13 @@
-const db = require("../models");
+const db = require("../models/index");
 const Item = db.items;
 const Op = db.Sequelize.Op;
 
 // create and save new item
 exports.create = (req, res) => {
-	// console.log("this is the req: " + req);
+	console.log("this is the req: " + req);
 	// validate request
 	if (!req.body.name) {
-		res.status(400).json({
+		res.status(400).send({
 			message: "Needs to have a name!",
 		});
 		return;
@@ -20,12 +20,12 @@ exports.create = (req, res) => {
 		element: req.body.element,
 		effect: req.body.effect,
 		notes: req.body.notes,
-		recommended: req.body.recommended ? req.body.recommended : false,
+		recommended: req.body.recommended ? req.body.recommended : false
 	};
 
 	Item.create(item)
 		.then((data) => {
-			res.status(200).json(data);
+			res.status(200).send(data);
 		})
 		.catch((err) => {
 			res.status(500).json({
