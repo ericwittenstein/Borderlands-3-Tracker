@@ -4,10 +4,10 @@ const Op = db.Sequelize.Op;
 
 // create and save new item
 exports.create = (req, res) => {
-	console.log("this is the req: " + req);
+	// console.log("this is the req: " + req);
 	// validate request
 	if (!req.body.name) {
-		res.status(400).send({
+		res.status(400).json({
 			message: "Needs to have a name!",
 		});
 		return;
@@ -20,15 +20,15 @@ exports.create = (req, res) => {
 		element: req.body.element,
 		effect: req.body.effect,
 		notes: req.body.notes,
-		// recommended: req.body.recommended ? req.body.recommended : false,
+		recommended: req.body.recommended ? req.body.recommended : false,
 	};
 
 	Item.create(item)
 		.then((data) => {
-			res.status(200).send(data);
+			res.status(200).json(data);
 		})
 		.catch((err) => {
-			res.status(500).send({
+			res.status(500).json({
 				message: `Something prevented the item from being created: ${err}`,
 			});
 		});
@@ -44,7 +44,7 @@ exports.findAll = (req, res) => {
 			res.status(200).json(data);
 		})
 		.catch((err) => {
-			res.status(500).send({
+			res.status(500).json({
 				message: `Something went wrong while trying to retrieve items: ${err}`,
 			});
 		});
@@ -57,15 +57,15 @@ exports.findOne = (req, res) => {
 	Item.findByPk(id)
 		.then((data) => {
 			if (data) {
-				res.status(200).send(data);
+				res.status(200).json(data);
 			} else {
-				res.status(404).send({
+				res.status(404).json({
 					message: `Cannot find item at id=${id}`,
 				});
 			}
 		})
 		.catch((err) => {
-			res.status(500).send({
+			res.status(500).json({
 				message: `Something went wrong while tring to retrieve item id=${id}: ${err}`,
 			});
 		});
@@ -80,20 +80,20 @@ exports.update = (req, res) => {
 	})
 		.then((num) => {
 			if (num == 1) {
-				res.status(200).send({ message: "Item Successfully Updated" });
+				res.status(200).json({ message: "Item Successfully Updated" });
 			} else {
-				res.status(404).send({ message: "Was Not Updated" });
+				res.status(404).json({ message: "Was Not Updated" });
 			}
 		})
 		.catch((err) => {
-			res.status(500).send({
+			res.status(500).json({
 				message: `Something went wrong during the update: ${err}`,
 			});
 		});
 };
 
 // delete item by id
-exports.deleteOne = (req, res) => {
+exports.delete = (req, res) => {
 	const id = req.params.id;
 
 	Item.destroy({
@@ -101,13 +101,13 @@ exports.deleteOne = (req, res) => {
 	})
 		.then((num) => {
 			if (num == 1) {
-				res.status(200).send({ message: "Successfully Deleted" });
+				res.status(200).json({ message: "Successfully Deleted" });
 			} else {
-				res.status(404).send({ message: "Was Not Deleted" });
+				res.status(404).json({ message: "Was Not Deleted" });
 			}
 		})
 		.catch((err) => {
-			res.status(500).send({
+			res.status(500).json({
 				message: `Something went wrong during the deletion process: ${err}`,
 			});
 		});
@@ -120,20 +120,20 @@ exports.deleteAll = (req, res) => {
 		truncate: false,
 	})
 		.then((nums) => {
-			res.status(200).send({ message: `${nums} Items were deleted!` });
+			res.status(200).json({ message: `${nums} Items were deleted!` });
 		})
 		.catch((err) => {
-			res.status(500).send({ message: `Something went wrong: ${err}` });
+			res.status(500).json({ message: `Something went wrong: ${err}` });
 		});
 };
 
 exports.findAllRecommended = (req, res) => {
 	Item.findAll({ where: { recommended: true } })
 		.then((data) => {
-			res.status(200).send(data);
+			res.status(200).json(data);
 		})
 		.catch((err) => {
-			res.status(500).send({
+			res.status(500).json({
 				message: `Something went wrong while searching: ${err}`,
 			});
 		});
