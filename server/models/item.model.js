@@ -18,9 +18,6 @@ module.exports = (sequelize, Sequelize) => {
 		recommended: {
 			type: Sequelize.BOOLEAN,
 		},
-		freezeTableName: true,
-		underscored: true,
-		modelName: "item",
 	});
 
 	return Item;
