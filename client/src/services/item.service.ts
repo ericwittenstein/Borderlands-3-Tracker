@@ -11,7 +11,7 @@ class ItemDataService {
 	}
 
 	create(data: ItemData) {
-		return http.post<ItemData>("/api/items/", data);
+		return http.post<ItemData>("/api/items", data);
 	}
 
 	update(data: ItemData, id: any) {
