@@ -6,9 +6,9 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
 	console.log("this is the req: " + req);
 	// validate request
-	if (!req.body.name) {
-		res.status(400).send({
-			message: "Needs to have a name!",
+	if (req.body.name) {
+		res.status(400).json({
+			message: "Cannot be empty!",
 		});
 		return;
 	}
