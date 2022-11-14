@@ -12,8 +12,8 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-var corsOptions = {
-	origin: "http://localhost:8081",
+const corsOptions = {
+	origin: "https://bl3tracker.herokuapp.com",
 };
 
 app.use(cors(corsOptions));
