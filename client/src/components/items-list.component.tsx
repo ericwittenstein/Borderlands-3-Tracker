@@ -82,7 +82,7 @@ export default class ItemsList extends Component<Props, State> {
 	// function to delete all items
 	// DO NOT USE UNLESS ABSOLUTELY SURE
 	removeAllItems() {
-		ItemDataService.deleteAll()
+		ItemDataService.removeAll()
 			.then((response: any) => {
 				console.log(response.data);
 				this.refreshList();

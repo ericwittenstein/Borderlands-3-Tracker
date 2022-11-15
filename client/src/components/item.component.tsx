@@ -177,7 +177,7 @@ export default class Item extends Component<Props, State> {
 
 	// DO NOT USE UNLESS ABSOLUTELY NECESSARY
 	deleteItem() {
-		ItemDataService.delete(this.state.currentItem.id)
+		ItemDataService.remove(this.state.currentItem.id)
 			.then((response: any) => {
 				console.log(response.data);
 				this.props.history.push("/items");

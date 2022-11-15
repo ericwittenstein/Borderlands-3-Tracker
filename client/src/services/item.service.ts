@@ -1,34 +1,42 @@
 import http from "../http-common";
 import ItemData from "../types/item.type";
 
-class ItemDataService {
-	getAll() {
-		return http.get<Array<ItemData>>("/items");
-	}
+const getAll = () => {
+	return http.get<Array<ItemData>>("/items");
+};
 
-	get(id: string) {
-		return http.get<ItemData>(`/items/${id}`);
-	}
+const get = (id: string) => {
+	return http.get<ItemData>(`/items/${id}`);
+};
 
-	create(data: ItemData) {
-		return http.post<ItemData>("/items", data);
-	}
+const create = (data: ItemData) => {
+	return http.post<ItemData>("/items", data);
+};
 
-	update(data: ItemData, id: any) {
-		return http.put<any>(`/items/${id}`, data);
-	}
+const update = (data: ItemData, id: any) => {
+	return http.put<any>(`/items/${id}`, data);
+};
 
-	delete(id: any) {
-		return http.delete<any>(`/items/${id}`);
-	}
+const remove = (id: any) => {
+	return http.delete<any>(`/items/${id}`);
+};
 
-	deleteAll() {
-		return http.delete<any>(`/items`);
-	}
+const removeAll = () => {
+	return http.delete<any>(`/items`);
+};
 
-	findByName(name: string) {
-		return http.get<Array<ItemData>>(`/items/?name=${name}`);
-	}
-}
+const findByName = (name: string) => {
+	return http.get<Array<ItemData>>(`/items/?name=${name}`);
+};
 
-export default new ItemDataService();
+const ItemDataService = {
+	getAll,
+	get,
+	create,
+	update,
+	remove,
+	removeAll,
+	findByName
+};
+
+export default ItemDataService;
