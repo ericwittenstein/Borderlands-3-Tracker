@@ -17,7 +17,7 @@ exports.create = (req, res) => {
 	console.log("this is the req from the item controller: " + req);
 	console.log("this is the item created from the req" + item);
 	// validate request
-	if (req.body.name) {
+	if (!req.body.name) {
 		res.status(400).json({
 			message: "Cannot be empty!",
 		});
