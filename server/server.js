@@ -1,8 +1,9 @@
 // imports
 const express = require("express");
-const routes = require("./routes/routesIndex");
-const sequelize = require("./config/connection");
-const Item = require("./models/modelIndex");
+// const routes = require("./routes/routesIndex");
+// const sequelize = require("./config/connection");
+// const Item = require("./models/modelIndex");
+const db = require("./models");
 const path = require("path");
 
 // cors provides middleware request authentication and options
@@ -11,19 +12,18 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-var corsOptions = {
-	origin: "http://localhost:3000",
+const corsOptions = {
+	origin: "https://bl3tracker.herokuapp.com",
 };
 
 app.use(cors(corsOptions));
 
 // configure express routing to point to correct folder
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "../client/build")));
-	app.get("/*", (req, res) => {
-		res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-	});
-}
+
+app.use(express.static(path.join(__dirname, "/views")));
+app.get("/", (req, res) => {
+	res.sendFile(path.join(__dirname, "/views", "index.html"));
+});
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -32,15 +32,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // test route
-// app.get("/", (req, res) => {
-// 	res.json({ message: "Welcome!" });
-// });
+app.get("/", (req, res) => {
+	res.json({ message: "Welcome!" });
+});
 
-app.use(routes);
+// app.use(routes);
+require("./routes/item.routes")(app);
 
 // turn on connection to db and server
-sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
 	app.listen(PORT, () => {
-		console.log(`Server is now running on port http://localhost:${PORT}`);
+		console.log(`Server is now running on port ${PORT}`);
 	});
 });

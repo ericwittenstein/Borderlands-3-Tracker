@@ -1,49 +1,49 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+// const { Model, DataTypes } = require("sequelize");
+// const sequelize = require("../config/connection");
 
-class Item extends Model {}
+// class Item extends Model {}
 
-// sequelize schema definition of item table
-Item.init(
-	{
-		id: {
-			type: DataTypes.INTEGER,
-			primaryKey: true,
-			allowNull: false,
-			autoIncrement: true,
-		},
-		name: {
-			type: DataTypes.STRING,
-			unique: true,
-			allowNull: false,
-		},
-		item_type: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		element: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		effect: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		notes: {
-			type: DataTypes.STRING,
-		},
-		recommended: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-	},
-	{
-		sequelize,
-		timestamps: true,
-		freezeTableName: true,
-		underscored: true,
-		modelName: "item",
-	}
-);
+// // sequelize schema definition of item table
+// Item.init(
+// 	{
+// 		id: {
+// 			type: DataTypes.INTEGER,
+// 			primaryKey: true,
+// 			allowNull: false,
+// 			autoIncrement: true,
+// 		},
+// 		name: {
+// 			type: DataTypes.STRING,
+// 			unique: true,
+// 			allowNull: false,
+// 		},
+// 		item_type: {
+// 			type: DataTypes.STRING,
+// 			allowNull: false,
+// 		},
+// 		element: {
+// 			type: DataTypes.STRING,
+// 			allowNull: false,
+// 		},
+// 		effect: {
+// 			type: DataTypes.STRING,
+// 			allowNull: false,
+// 		},
+// 		notes: {
+// 			type: DataTypes.STRING,
+// 		},
+// 		recommended: {
+// 			type: DataTypes.STRING,
+// 			allowNull: false,
+// 		},
+// 	},
+// 	{
+// 		sequelize,
+// 		timestamps: true,
+// 		freezeTableName: true,
+// 		underscored: true,
+// 		modelName: "item",
+// 	}
+// );
 
-module.exports = Item ;
+// module.exports = Item ;

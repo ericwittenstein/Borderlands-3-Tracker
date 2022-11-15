@@ -1,7 +1,7 @@
 import { Component, ChangeEvent } from "react";
-import ItemDataService from "../services/itemDataService";
+import ItemDataService from "../services/item.service";
 import { Link } from "react-router-dom";
-import ItemData from "../types/itemTypes";
+import ItemData from "../types/item.type";
 
 type Props = {};
 
@@ -50,8 +50,8 @@ export default class ItemsList extends Component<Props, State> {
 
 	// function to retrieve list of items
 	retrieveItems() {
-		ItemDataService.findAll()
-			.then((response) => {
+		ItemDataService.getAll()
+			.then((response: any) => {
 				this.setState({
 					items: response.data
 				});
@@ -82,7 +82,7 @@ export default class ItemsList extends Component<Props, State> {
 	// function to delete all items
 	// DO NOT USE UNLESS ABSOLUTELY SURE
 	removeAllItems() {
-		ItemDataService.deleteAll()
+		ItemDataService.removeAll()
 			.then((response: any) => {
 				console.log(response.data);
 				this.refreshList();
@@ -211,7 +211,7 @@ export default class ItemsList extends Component<Props, State> {
 									<label>
 										<strong>Recommended:</strong>
 									</label>{" "}
-									{currentItem.recommended}
+									{currentItem.recommended ? "YES" : "NO"}
 								</div>
 
 								<Link
