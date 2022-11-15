@@ -4,15 +4,6 @@ const Op = db.Sequelize.Op;
 
 // create and save new item
 exports.create = (req, res) => {
-	console.log("this is the req from the item controller: " + req);
-	// validate request
-	if (req.body.name) {
-		res.status(400).json({
-			message: "Cannot be empty!",
-		});
-		return;
-	}
-
 	// create new item
 	const item = {
 		name: req.body.name,
@@ -22,6 +13,16 @@ exports.create = (req, res) => {
 		notes: req.body.notes,
 		recommended: req.body.recommended ? req.body.recommended : false
 	};
+
+	console.log("this is the req from the item controller: " + req);
+	console.log("this is the item created from the req" + item);
+	// validate request
+	if (req.body.name) {
+		res.status(400).json({
+			message: "Cannot be empty!",
+		});
+		return;
+	}
 
 	Item.create(item)
 		.then((data) => {
