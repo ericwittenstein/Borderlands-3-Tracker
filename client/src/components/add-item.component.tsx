@@ -82,7 +82,7 @@ export default class AddItem extends Component<Props, State> {
 			notes: this.state.notes
 			// recommended: this.state.recommended
 		};
-		// console.log(data);
+		console.log("This is from the add-item saveItem function:" + data);
 		ItemDataService.create(data)
 			.then((response: any) => {
 				this.setState({
