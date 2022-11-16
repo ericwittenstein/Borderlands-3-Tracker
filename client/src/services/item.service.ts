@@ -25,8 +25,8 @@ const removeAll = () => {
 	return http.delete<any>(`/items`);
 };
 
-const findByName = (name: string) => {
-	return http.get<Array<ItemData>>(`/items/?name=${name}`);
+const findByName = (item_name: string) => {
+	return http.get<Array<ItemData>>(`/items/?name=${item_name}`);
 };
 
 const ItemDataService = {
