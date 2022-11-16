@@ -1,298 +1,198 @@
-import { Component, ChangeEvent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import React, { useState, useEffect, ChangeEvent } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 import ItemDataService from "../services/item.service";
 import ItemData from "../types/item.type";
 
-interface RouterProps {
-	id: string;
-}
-
-type Props = RouteComponentProps<RouterProps>;
-
-// state variable types for this component
-type State = {
-	currentItem: ItemData;
-	message: string;
-};
-
 // React component for detailed item page
-export default class Item extends Component<Props, State> {
-	constructor(props: Props) {
-		super(props);
-		// bind the change events to the item props
-		this.onChangeName = this.onChangeName.bind(this);
-		this.onChangeType = this.onChangeType.bind(this);
-		this.onChangeElement = this.onChangeElement.bind(this);
-		this.onChangeEffect = this.onChangeEffect.bind(this);
-		this.onChangeNotes = this.onChangeNotes.bind(this);
-		this.updateRecommended = this.updateRecommended.bind(this);
-		this.getItem = this.getItem.bind(this);
-		this.updateItem = this.updateItem.bind(this);
-		this.deleteItem = this.deleteItem.bind(this);
+const Item: React.FC = () => {
+	const { id } = useParams();
+	let navigate = useNavigate();
 
-		// initial state of the component
-		this.state = {
-			currentItem: {
-				id: null,
-				name: "",
-				item_type: "",
-				element: "",
-				effect: "",
-				notes: "",
-				recommended: false
-			},
-			message: ""
-		};
-	}
+	const initialItemState = {
+		id: null,
+		item_name: "",
+		item_type: "",
+		element: "",
+		effect: "",
+		notes: "",
+		recommended: false
+	};
 
-	// if component mounted successfully, retrieve the item's details
-	componentDidMount() {
-		this.getItem(this.props.match.params.id);
-	}
+	const [currentItem, setCurrentItem] = useState<ItemData>(initialItemState);
+	const [message, setMessage] = useState<String>("");
 
-	// trackers for value changes and assignments
-	onChangeName(e: ChangeEvent<HTMLInputElement>) {
-		const name = e.target.value;
+	// function to get item by id
+	const getItem = (id: string) => {
+		ItemDataService.get(id)
+			.then((response: any) => {
+				setCurrentItem(response.data);
+				console.log(response.data);
+			})
+			.catch((e: Error) => {
+				console.log(e);
+			});
+	};
 
-		this.setState((prevState) => {
-			return {
-				currentItem: {
-					...prevState.currentItem,
-					name: name
-				}
-			};
-		});
-	}
+	useEffect(() => {
+		if (id) getItem(id);
+	}, [id]);
 
-	onChangeType(e: ChangeEvent<HTMLInputElement>) {
-		const item_type = e.target.value;
+	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = event.target;
+		setCurrentItem({ ...currentItem, [name]: value });
+	};
 
-		this.setState((prevState) => {
-			return {
-				currentItem: {
-					...prevState.currentItem,
-					item_type: item_type
-				}
-			};
-		});
-	}
-
-	onChangeElement(e: ChangeEvent<HTMLInputElement>) {
-		const element = e.target.value;
-
-		this.setState((prevState) => {
-			return {
-				currentItem: {
-					...prevState.currentItem,
-					element: element
-				}
-			};
-		});
-	}
-
-	onChangeEffect(e: ChangeEvent<HTMLInputElement>) {
-		const effect = e.target.value;
-
-		this.setState((prevState) => {
-			return {
-				currentItem: {
-					...prevState.currentItem,
-					effect: effect
-				}
-			};
-		});
-	}
-
-	onChangeNotes(e: ChangeEvent<HTMLInputElement>) {
-		const notes = e.target.value;
-
-		this.setState((prevState) => {
-			return {
-				currentItem: {
-					...prevState.currentItem,
-					notes: notes
-				}
-			};
-		});
-	}
-
-	updateRecommended(status: boolean) {
-		const data: ItemData = {
-			id: this.state.currentItem.id,
-			name: this.state.currentItem.name,
-			item_type: this.state.currentItem.item_type,
-			element: this.state.currentItem.element,
-			effect: this.state.currentItem.effect,
-			notes: this.state.currentItem.notes,
+	const updateRecommended = (status: boolean) => {
+		const data = {
+			id: currentItem.id,
+			item_name: currentItem.item_name,
+			item_type: currentItem.item_type,
+			element: currentItem.element,
+			effect: currentItem.effect,
+			notes: currentItem.notes,
 			recommended: status
 		};
 
-		ItemDataService.update(data, this.state.currentItem.id)
+		ItemDataService.update(currentItem.id, data)
 			.then((response: any) => {
-				this.setState((prevState) => ({
-					currentItem: {
-						...prevState.currentItem,
-						recommended: status
-					},
-					message: "Item updated successfully"
-				}));
 				console.log(response.data);
+				setCurrentItem({ ...currentItem, recommended: status });
+				setMessage("Item updated successfully");
 			})
 			.catch((e: Error) => {
 				console.log(e);
 			});
-	}
-
-	// function to get item by id
-	getItem(id: string) {
-		ItemDataService.get(id)
-			.then((response: any) => {
-				this.setState({
-					currentItem: response.data
-				});
-				console.log(response.data);
-			})
-			.catch((e: Error) => {
-				console.log(e);
-			});
-	}
+	};
 
 	// function to push the new info to the item at the existing item id
-	updateItem() {
-		ItemDataService.update(
-			this.state.currentItem,
-			this.state.currentItem.id
-		)
+	const updateItem = () => {
+		ItemDataService.update(currentItem.id, currentItem)
 			.then((response: any) => {
 				console.log(response.data);
-				this.setState({
-					message: "Item updated successfully"
-				});
+				setMessage("Item updated successfully");
 			})
 			.catch((e: Error) => {
 				console.log(e);
 			});
-	}
+	};
 
 	// DO NOT USE UNLESS ABSOLUTELY NECESSARY
-	deleteItem() {
-		ItemDataService.remove(this.state.currentItem.id)
+	const deleteItem = () => {
+		ItemDataService.remove(currentItem.id)
 			.then((response: any) => {
 				console.log(response.data);
-				this.props.history.push("/items");
+				navigate("/items");
 			})
 			.catch((e: Error) => {
 				console.log(e);
 			});
-	}
+	};
 
-	render() {
-		const { currentItem } = this.state;
+	return (
+		<div>
+			{currentItem ? (
+				<div className="edit-form">
+					<h4>Item</h4>
+					<form>
+						<div className="form-group">
+							<label htmlFor="name">Name</label>
+							<input
+								type="text"
+								className="form-control"
+								id="item_name"
+								value={currentItem.item_name}
+								onChange={handleInputChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="item_type">Item Type</label>
+							<input
+								type="text"
+								className="form-control"
+								id="item_type"
+								value={currentItem.item_type}
+								onChange={handleInputChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="element">Element</label>
+							<input
+								type="text"
+								className="form-control"
+								id="element"
+								value={currentItem.element}
+								onChange={handleInputChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="effect">Effect</label>
+							<input
+								type="text"
+								className="form-control"
+								id="effect"
+								value={currentItem.effect}
+								onChange={handleInputChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="notes">Notes</label>
+							<input
+								type="text"
+								className="form-control"
+								id="notes"
+								value={currentItem.notes}
+								onChange={handleInputChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label>
+								<strong>Recommended?</strong>
+							</label>
+							{currentItem.recommended ? "YES" : "NO"}
+						</div>
+					</form>
 
-		return (
-			<div>
-				{currentItem ? (
-					<div className="edit-form">
-						<h4>Item</h4>
-						<form>
-							<div className="form-group">
-								<label htmlFor="name">Name</label>
-								<input
-									type="text"
-									className="form-control"
-									id="name"
-									value={currentItem.name}
-									onChange={this.onChangeName}
-								/>
-							</div>
-							<div className="form-group">
-								<label htmlFor="item_type">Item Type</label>
-								<input
-									type="text"
-									className="form-control"
-									id="item_type"
-									value={currentItem.item_type}
-									onChange={this.onChangeType}
-								/>
-							</div>
-							<div className="form-group">
-								<label htmlFor="element">Element</label>
-								<input
-									type="text"
-									className="form-control"
-									id="element"
-									value={currentItem.element}
-									onChange={this.onChangeElement}
-								/>
-							</div>
-							<div className="form-group">
-								<label htmlFor="effect">Effect</label>
-								<input
-									type="text"
-									className="form-control"
-									id="effect"
-									value={currentItem.effect}
-									onChange={this.onChangeEffect}
-								/>
-							</div>
-							<div className="form-group">
-								<label htmlFor="notes">Notes</label>
-								<input
-									type="text"
-									className="form-control"
-									id="notes"
-									value={currentItem.notes}
-									onChange={this.onChangeNotes}
-								/>
-							</div>
-							<div className="form-group">
-								<label>
-									<strong>Recommended?</strong>
-								</label>
-								{currentItem.recommended ? "YES" : "NO"}
-							</div>
-						</form>
-
-						{currentItem.recommended ? (
-							<button
-								className="badge badge-primary mr-2"
-								onClick={() => this.updateRecommended(false)}
-							>
-								NO
-							</button>
-						) : (
-							<button
-								className="badge badge-primary mr-2"
-								onClick={() => this.updateRecommended(true)}
-							>
-								YES
-							</button>
-						)}
-
+					{currentItem.recommended ? (
 						<button
-							className="badge badge-danger mr-2"
-							onClick={this.deleteItem}
+							className="badge badge-primary mr-2"
+							onClick={() => updateRecommended(false)}
 						>
-							DELETE
+							NO
 						</button>
-
+					) : (
 						<button
-							type="submit"
-							className="badge badge-success"
-							onClick={this.updateItem}
+							className="badge badge-primary mr-2"
+							onClick={() => updateRecommended(true)}
 						>
-							UPDATE
+							YES
 						</button>
-						<p>{this.state.message}</p>
-					</div>
-				) : (
-					<div>
-						<br />
-						<p>Please click on an item</p>
-					</div>
-				)}
-			</div>
-		);
-	}
-}
+					)}
+
+					<button
+						className="badge badge-danger mr-2"
+						onClick={deleteItem}
+					>
+						DELETE
+					</button>
+
+					<button
+						type="submit"
+						className="badge badge-success"
+						onClick={updateItem}
+					>
+						UPDATE
+					</button>
+					<p>{message}</p>
+				</div>
+			) : (
+				<div>
+					<br />
+					<p>Please click on an item</p>
+				</div>
+			)}
+		</div>
+	);
+};
+
+export default Item;

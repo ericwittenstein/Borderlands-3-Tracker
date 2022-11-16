@@ -3,46 +3,12 @@ import ItemDataService from "../services/item.service";
 import { Link } from "react-router-dom";
 import ItemData from "../types/item.type";
 
-// type Props = {};
-
-// // state variable types for this component
-// type State = {
-// 	items: Array<ItemData>;
-// 	currentItem: ItemData | null;
-// 	currentIndex: number;
-// 	searchName: string;
-// };
-
 // react component for list of items
 const ItemsList: React.FC = () => {
-	// constructor(props: Props) {
-	// 	super(props);
-	// 	// bind the change events to the item props
-	// 	this.onChangeSearchName = this.onChangeSearchName.bind(this);
-	// 	this.retrieveItems = this.retrieveItems.bind(this);
-	// 	this.refreshList = this.refreshList.bind(this);
-	// 	this.setActiveItem = this.setActiveItem.bind(this);
-	// 	this.removeAllItems = this.removeAllItems.bind(this);
-	// 	this.searchName = this.searchName.bind(this);
-
-	// 	// initial state of the component
-	// 	this.state = {
-	// 		items: [],
-	// 		currentItem: null,
-	// 		currentIndex: -1,
-	// 		searchName: ""
-	// 	};
-	// }
-
 	const [items, setItems] = useState<Array<ItemData>>([]);
 	const [currentItem, setCurrentItem] = useState<ItemData | null>(null);
 	const [currentIndex, setCurrentIndex] = useState<number>(-1);
 	const [searchName, setSearchName] = useState<string>("");
-
-	// if component mounted successfully, retrieve the list of items
-	// componentDidMount() {
-	// 	this.retrieveItems();
-	// }
 
 	useEffect(() => {
 		retrieveItems();
@@ -135,9 +101,6 @@ const ItemsList: React.FC = () => {
 				<div className="col-3">
 					<h4>Items List</h4>
 					{/* This should be the list of all the items */}
-					{/* TODO: Look into pagination to see about not displaying all at once */}
-					{/* Pagination start point: https://www.bezkoder.com/node-js-sequelize-pagination-mysql/
-                        Pagination second step (option, adds Material UI, try to find Bootstrap instead):  https://www.bezkoder.com/react-pagination-material-ui/*/}
 					<ul className="list-group">
 						{items &&
 							items.map((item, index) => (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
@@ -30,11 +30,12 @@ const App: React.FC = () => {
 			</nav>
 
 			<div className="container mt-3">
-				<Switch>
-					<Route exact path={["/", "/items"]} component={ItemsList} />
-					<Route exact path="/add" component={AddItem} />
-					<Route path="/items/:id" component={Item} />
-				</Switch>
+				<Routes>
+					<Route path="/" element={<ItemsList/>} />
+					<Route path="/items" element={<ItemsList/>} />
+					<Route path="/add" element={<AddItem/>} />
+					<Route path="/items/:id" element={<Item/>} />
+				</Routes>
 			</div>
 		</div>
 	);

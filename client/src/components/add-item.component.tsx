@@ -4,39 +4,8 @@ import ItemData from "../types/item.type";
 
 // TODO: Refactor and double check EVERYTHING
 
-// type Props = {};
-
-// type State = ItemData & {
-// 	submitted: boolean
-// };
-
 // react component that will function as the add form
 const AddItem: React.FC = () => {
-	// constructor(props: Props) {
-	// 	super(props);
-	// 	// bind the change events to the item props
-	// 	this.onChangeName = this.onChangeName.bind(this);
-	// 	this.onChangeType = this.onChangeType.bind(this);
-	// 	this.onChangeElement = this.onChangeElement.bind(this);
-	// 	this.onChangeEffect = this.onChangeEffect.bind(this);
-	// 	this.onChangeNotes = this.onChangeNotes.bind(this);
-	// 	// this.onChangeRec = this.onChangeRec.bind(this);
-	// 	this.saveItem = this.saveItem.bind(this);
-	// 	this.newItem = this.newItem.bind(this);
-
-	// 	// initial state of the component
-	// 	this.state = {
-	// 		id: null,
-	// 		name: "",
-	// 		item_type: "",
-	// 		element: "",
-	// 		effect: "",
-	// 		notes: "",
-	// 		recommended: false,
-	// 		submitted: false
-	// 	};
-	// }
-
 	const initialItemState = {
 		id: null,
 		item_name: "",
@@ -55,43 +24,6 @@ const AddItem: React.FC = () => {
 		setItem({ ...item, [name]: value });
 	};
 
-	// trackers for value changes and assignment
-	// onChangeName(e: ChangeEvent<HTMLInputElement>) {
-	// 	this.setState({
-	// 		name: e.target.value
-	// 	});
-	// }
-
-	// onChangeType(e: ChangeEvent<HTMLInputElement>) {
-	// 	this.setState({
-	// 		item_type: e.target.value
-	// 	});
-	// }
-
-	// onChangeElement(e: ChangeEvent<HTMLInputElement>) {
-	// 	this.setState({
-	// 		element: e.target.value
-	// 	});
-	// }
-
-	// onChangeEffect(e: ChangeEvent<HTMLInputElement>) {
-	// 	this.setState({
-	// 		effect: e.target.value
-	// 	});
-	// }
-
-	// onChangeNotes(e: ChangeEvent<HTMLInputElement>) {
-	// 	this.setState({
-	// 		notes: e.target.value
-	// 	});
-	// }
-
-	// onChangeRec(e: ChangeEvent<HTMLInputElement>) {
-	// 	this.setState({
-	// 		recommended: e.target.value
-	// 	});
-	// }
-
 	// item submission function
 	const saveItem = () => {
 		const data = {
@@ -102,7 +34,9 @@ const AddItem: React.FC = () => {
 			notes: item.notes
 			// recommended: this.state.recommended
 		};
+
 		console.log("This is from the add-item saveItem function:" + data);
+
 		ItemDataService.create(data)
 			.then((response: any) => {
 				setItem({
