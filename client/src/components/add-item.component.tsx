@@ -2,6 +2,8 @@ import { Component, ChangeEvent } from "react";
 import ItemDataService from "../services/item.service";
 import ItemData from "../types/item.type";
 
+// TODO: Refactor and double check EVERYTHING
+
 type Props = {};
 
 type State = ItemData & {
