@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
 
-import AddItem from "./components/add-item.component";
-import Item from "./components/item.component";
-import ItemsList from "./components/items-list.component";
+import AddItem from "./components/AddItem";
+import Item from "./components/Item";
+import ItemsList from "./components/ItemsList";
 
-const App: React.FC = () => {
+const App = () => {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">

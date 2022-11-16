@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import ItemDataService from "../services/item.service";
+import ItemDataService from "../services/ItemService";
 import ItemData from "../types/item.type";
 
 // React component for detailed item page

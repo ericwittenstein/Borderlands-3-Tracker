@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import ItemDataService from "../services/item.service";
+import ItemDataService from "../services/ItemService";
 import { Link } from "react-router-dom";
 import ItemData from "../types/item.type";
 

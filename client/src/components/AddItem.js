@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import ItemDataService from "../services/item.service";
+import ItemDataService from "../services/ItemService";
 import ItemData from "../types/item.type";
 
 // TODO: Refactor and double check EVERYTHING
