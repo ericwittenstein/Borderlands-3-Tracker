@@ -1,34 +1,32 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
-import ItemDataService from "../services/ItemService";
+import React, { useState, useEffect } from "react";
+import ItemService from "../services/ItemService";
 import { Link } from "react-router-dom";
-import ItemData from "../types/item.type";
 
 // react component for list of items
-const ItemsList: React.FC = () => {
-	const [items, setItems] = useState<Array<ItemData>>([]);
-	const [currentItem, setCurrentItem] = useState<ItemData | null>(null);
-	const [currentIndex, setCurrentIndex] = useState<number>(-1);
-	const [searchName, setSearchName] = useState<string>("");
+const ItemsList = () => {
+	const [items, setItems] = useState([]);
+	const [currentItem, setCurrentItem] = useState(null);
+	const [currentIndex, setCurrentIndex] = useState(-1);
+	const [searchName, setSearchName] = useState("");
 
 	useEffect(() => {
 		retrieveItems();
 	}, []);
 
 	// tracker for value changes and assignment for search bar
-	const onChangeSearchName = (e: ChangeEvent<HTMLInputElement>) => {
+	const onChangeSearchName = (e) => {
 		const searchName = e.target.value;
-
 		setSearchName(searchName);
 	};
 
 	// function to retrieve list of items
 	const retrieveItems = () => {
-		ItemDataService.getAll()
-			.then((response: any) => {
+		ItemService.getAll()
+			.then((response) => {
 				setItems(response.data);
 				console.log(response.data);
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};
@@ -41,7 +39,7 @@ const ItemsList: React.FC = () => {
 	};
 
 	// function to designate the current item as active
-	const setActiveItem = (item: ItemData, index: number) => {
+	const setActiveItem = (item, index) => {
 		setCurrentItem(item);
 		setCurrentIndex(index);
 	};
@@ -49,26 +47,24 @@ const ItemsList: React.FC = () => {
 	// function to delete all items
 	// DO NOT USE UNLESS ABSOLUTELY SURE
 	const removeAllItems = () => {
-		ItemDataService.removeAll()
-			.then((response: any) => {
+		ItemService.removeAll()
+			.then((response) => {
 				console.log(response.data);
 				refreshList();
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};
 
 	// function to handle the search by name feature
 	const findByName = () => {
-		ItemDataService.findByName(searchName)
-			.then((response: any) => {
+		ItemService.findByName(searchName)
+			.then((response) => {
 				setItems(response.data);
-				setCurrentItem(null);
-				setCurrentIndex(-1);
 				console.log(response.data);
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};

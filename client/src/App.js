@@ -8,7 +8,7 @@ import AddItem from "./components/AddItem";
 import Item from "./components/Item";
 import ItemsList from "./components/ItemsList";
 
-const App = () => {
+function App () {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">

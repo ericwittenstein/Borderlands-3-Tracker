@@ -1,35 +1,34 @@
 import http from "../http-common";
-import ItemData from "../types/item.type";
 
 const getAll = () => {
-	return http.get<Array<ItemData>>("/items");
+	return http.get("/items");
 };
 
-const get = (id: string) => {
-	return http.get<ItemData>(`/items/${id}`);
+const get = (id) => {
+	return http.get(`/items/${id}`);
 };
 
-const create = (data: ItemData) => {
-	return http.post<ItemData>("/items", data);
+const create = (data) => {
+	return http.post("/items", data);
 };
 
-const update = (data: ItemData, id: any) => {
-	return http.put<any>(`/items/${id}`, data);
+const update = (data, id) => {
+	return http.put(`/items/${id}`, data);
 };
 
-const remove = (id: any) => {
-	return http.delete<any>(`/items/${id}`);
+const remove = (id) => {
+	return http.delete(`/items/${id}`);
 };
 
 const removeAll = () => {
-	return http.delete<any>(`/items`);
+	return http.delete(`/items`);
 };
 
-const findByName = (item_name: string) => {
-	return http.get<Array<ItemData>>(`/items/?name=${item_name}`);
+const findByName = (item_name) => {
+	return http.get(`/items/?name=${item_name}`);
 };
 
-const ItemDataService = {
+const ItemService = {
 	getAll,
 	get,
 	create,
@@ -39,4 +38,4 @@ const ItemDataService = {
 	findByName
 };
 
-export default ItemDataService;
+export default ItemService;
