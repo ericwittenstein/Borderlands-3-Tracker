@@ -3,8 +3,15 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 import "./index.css";
 import "./App.css";
+
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// root.render(<App/>);
 
 ReactDOM.render(
   <HashRouter>

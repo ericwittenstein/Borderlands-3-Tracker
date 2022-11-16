@@ -142,18 +142,18 @@ const AddItem: React.FC = () => {
 						/>
 					</div>
 					{/* <div className="form-group">
-							<label htmlFor="recommended">Recommended</label>
-							<input
-								type="text"
-								className="form-control"
-								id="recommended"
-								required
-								value={recommended}
-								onChange={this.onChangeRec}
-								name="recommended"
-								placeholder="Is this item recommended or not?"
-							/>
-						</div> */}
+						<label htmlFor="recommended">Recommended</label>
+						<input
+							type="text"
+							className="form-control"
+							id="recommended"
+							required
+							value={item.recommended}
+							onChange={handleInputChange}
+							name="recommended"
+							placeholder="Is this item recommended or not?"
+						/>
+					</div> */}
 
 					<button onClick={saveItem} className="btn btn-success">
 						Submit

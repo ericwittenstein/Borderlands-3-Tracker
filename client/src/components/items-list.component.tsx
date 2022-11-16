@@ -117,12 +117,12 @@ const ItemsList: React.FC = () => {
 							))}
 					</ul>
 					{/* THIS IS THE DELETE ALL BUTTON, DO NOT USE UNLESS ABSOLUTELY NECESSARY */}
-					{/* <button
+					<button
 						className="m-3 btn btn-sm btn-danger"
 						onClick={removeAllItems}
-						>
+					>
 						Remove All
-						</button> */}
+					</button>
 				</div>
 				{/* This is the section that will render the details of the active item */}
 				<div className="col-8">
