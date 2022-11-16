@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
 	// create new item
 	const item = {
-		name: req.body.name,
+		item_name: req.body.item_name,
 		item_type: req.body.item_type,
 		element: req.body.element,
 		effect: req.body.effect,
@@ -17,7 +17,7 @@ exports.create = (req, res) => {
 	console.log("this is the req from the item controller: " + req);
 	console.log("this is the item created from the req" + item);
 	// validate request
-	if (!req.body.name) {
+	if (!req.body.item_name) {
 		res.status(400).json({
 			message: "Cannot be empty!",
 		});
@@ -37,8 +37,8 @@ exports.create = (req, res) => {
 
 // retrieve all items from db
 exports.findAll = (req, res) => {
-	const name = req.query.name;
-	var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
+	const item_name = req.query.item_name;
+	var condition = item_name ? { item_name: { [Op.like]: `%${item_name}%` } } : null;
 
 	Item.findAll({ where: condition })
 		.then((data) => {

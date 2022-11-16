@@ -1,6 +1,6 @@
 [
 	{
-		"name": "Hellwalker",
+		"item_name": "Hellwalker",
 		"item_type": "Shotgun, Jacobs",
 		"element": "Incendiary",
 		"effect": "Low reload time, massive damage, inverted pentagram spread pattern, guitar noise on fire",
@@ -8,7 +8,7 @@
 		"recommended": true
 	},
 	{
-		"name": "Amazing Grace",
+		"item_name": "Amazing Grace",
 		"item_type": "Pistol, Jacobs",
 		"element": "Neutral",
 		"effect": "Bullet added to mag on crit hit",
@@ -16,7 +16,7 @@
 		"recommended": true
 	},
 	{
-		"name": "Chocolate Thunder",
+		"item_name": "Chocolate Thunder",
 		"item_type": "Grenade",
 		"element": "Neutral",
 		"effect": "It's an exploding piece of cake with high damage",
@@ -24,7 +24,7 @@
 		"recommended": false
 	},
 	{
-		"name": "Cutsman",
+		"item_name": "Cutsman",
 		"item_type": "Submachine Gun, Maliwan",
 		"element": "Incendiary, Shock, or Corrosive",
 		"effect": "Fires two explosive orbs that widen horizontally along their travel path, tethered by a damaging laser beam, always spawned with blade attachement",
