@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ItemData from "../types/item.type";
 
 // react component for list of items
-const ItemsList = () => {
+const ItemsList: React.FC = () => {
 	const [items, setItems] = useState<Array<ItemData>>([]);
 	const [currentItem, setCurrentItem] = useState<ItemData | null>(null);
 	const [currentIndex, setCurrentIndex] = useState<number>(-1);

@@ -5,7 +5,7 @@ import ItemDataService from "../services/item.service";
 import ItemData from "../types/item.type";
 
 // React component for detailed item page
-const Item = () => {
+const Item: React.FC = () => {
 	const { id } = useParams();
 	let navigate = useNavigate();
 
