@@ -5,7 +5,7 @@ import ItemData from "../types/item.type";
 // TODO: Refactor and double check EVERYTHING
 
 // react component that will function as the add form
-const AddItem: React.FC = () => {
+const AddItem = () => {
 	const initialItemState = {
 		id: null,
 		item_name: "",

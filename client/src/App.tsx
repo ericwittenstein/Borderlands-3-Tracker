@@ -8,7 +8,7 @@ import AddItem from "./components/add-item.component";
 import Item from "./components/item.component";
 import ItemsList from "./components/items-list.component";
 
-const App: React.FC = () => {
+const App = () => {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">
