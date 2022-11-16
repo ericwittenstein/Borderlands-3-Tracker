@@ -1,11 +1,10 @@
-import React, { useState, ChangeEvent } from "react";
-import ItemDataService from "../services/item.service";
-import ItemData from "../types/item.type";
+import React, { useState } from "react";
+import ItemService from "../services/ItemService";
 
 // TODO: Refactor and double check EVERYTHING
 
 // react component that will function as the add form
-const AddItem: React.FC = () => {
+const AddItem = () => {
 	const initialItemState = {
 		id: null,
 		item_name: "",
@@ -16,29 +15,28 @@ const AddItem: React.FC = () => {
 		recommended: false
 	};
 
-	const [item, setItem] = useState<ItemData>(initialItemState);
-	const [submitted, setSubmitted] = useState<boolean>(false);
+	const [item, setItem] = useState(initialItemState);
+	const [submitted, setSubmitted] = useState(false);
 
-	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setItem({ ...item, [name]: value });
 	};
 
 	// item submission function
 	const saveItem = () => {
-		const data = {
+		var data = {
 			item_name: item.item_name,
 			item_type: item.item_type,
 			element: item.element,
 			effect: item.effect,
 			notes: item.notes
-			// recommended: this.state.recommended
 		};
 
 		console.log("This is from the add-item saveItem function:" + data);
 
-		ItemDataService.create(data)
-			.then((response: any) => {
+		ItemService.create(data)
+			.then((response) => {
 				setItem({
 					id: response.data.id,
 					item_name: response.data.item_name,
@@ -51,7 +49,7 @@ const AddItem: React.FC = () => {
 				setSubmitted(true);
 				console.log(response.data);
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};

@@ -1,11 +1,10 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import ItemDataService from "../services/item.service";
-import ItemData from "../types/item.type";
+import ItemService from "../services/ItemService";
 
 // React component for detailed item page
-const Item: React.FC = () => {
+const Item = (props) => {
 	const { id } = useParams();
 	let navigate = useNavigate();
 
@@ -19,32 +18,34 @@ const Item: React.FC = () => {
 		recommended: false
 	};
 
-	const [currentItem, setCurrentItem] = useState<ItemData>(initialItemState);
-	const [message, setMessage] = useState<String>("");
+	const [currentItem, setCurrentItem] = useState(initialItemState);
+	const [message, setMessage] = useState("");
 
 	// function to get item by id
-	const getItem = (id: string) => {
-		ItemDataService.get(id)
-			.then((response: any) => {
+	const getItem = (id) => {
+		ItemService.get(id)
+			.then((response) => {
 				setCurrentItem(response.data);
 				console.log(response.data);
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};
 
 	useEffect(() => {
-		if (id) getItem(id);
+		if (id) {
+			getItem(id);
+		}
 	}, [id]);
 
-	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setCurrentItem({ ...currentItem, [name]: value });
 	};
 
-	const updateRecommended = (status: boolean) => {
-		const data = {
+	const updateRecommended = (status) => {
+		var data = {
 			id: currentItem.id,
 			item_name: currentItem.item_name,
 			item_type: currentItem.item_type,
@@ -54,37 +55,37 @@ const Item: React.FC = () => {
 			recommended: status
 		};
 
-		ItemDataService.update(currentItem.id, data)
-			.then((response: any) => {
-				console.log(response.data);
+		ItemService.update(currentItem.id, data)
+			.then((response) => {
 				setCurrentItem({ ...currentItem, recommended: status });
-				setMessage("Item updated successfully");
+				console.log(response.data);
+				// setMessage("Item updated successfully");
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};
 
 	// function to push the new info to the item at the existing item id
 	const updateItem = () => {
-		ItemDataService.update(currentItem.id, currentItem)
-			.then((response: any) => {
+		ItemService.update(currentItem.id, currentItem)
+			.then((response) => {
 				console.log(response.data);
 				setMessage("Item updated successfully");
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};
 
 	// DO NOT USE UNLESS ABSOLUTELY NECESSARY
 	const deleteItem = () => {
-		ItemDataService.remove(currentItem.id)
-			.then((response: any) => {
+		ItemService.remove(currentItem.id)
+			.then((response) => {
 				console.log(response.data);
 				navigate("/items");
 			})
-			.catch((e: Error) => {
+			.catch((e) => {
 				console.log(e);
 			});
 	};
@@ -96,7 +97,7 @@ const Item: React.FC = () => {
 					<h4>Item</h4>
 					<form>
 						<div className="form-group">
-							<label htmlFor="name">Name</label>
+							<label htmlFor="item_name">Name</label>
 							<input
 								type="text"
 								className="form-control"
