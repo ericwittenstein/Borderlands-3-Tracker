@@ -1,16 +1,17 @@
-import React from "react";
-import { Routes, Route, Link, } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
-
+import { Container } from "react-bootstrap";
+import React from "react";
+import { Routes, Route, Link, } from "react-router-dom";
 import AddItem from "./components/AddItem";
 import Item from "./components/Item";
 import ItemsList from "./components/ItemsList";
 
+
 function App () {
 	return (
-		<div>
+		<Container>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">
 				<Link to={"/items"} className="navbar-brand">
 					EWITT
@@ -37,7 +38,7 @@ function App () {
 					<Route path="/items/:id" element={<Item/>} />
 				</Routes>
 			</div>
-		</div>
+		</Container>
 	);
 };
 

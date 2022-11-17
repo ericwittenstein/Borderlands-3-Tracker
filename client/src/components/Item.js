@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Badge, Button, Container, Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 
 import ItemService from "../services/ItemService";
@@ -15,7 +16,7 @@ const Item = (props) => {
 		element: "",
 		effect: "",
 		notes: "",
-		recommended: false
+		recommended: false,
 	};
 
 	const [currentItem, setCurrentItem] = useState(initialItemState);
@@ -52,7 +53,7 @@ const Item = (props) => {
 			element: currentItem.element,
 			effect: currentItem.effect,
 			notes: currentItem.notes,
-			recommended: status
+			recommended: status,
 		};
 
 		ItemService.update(currentItem.id, data)
@@ -91,108 +92,104 @@ const Item = (props) => {
 	};
 
 	return (
-		<div>
+		<Container>
 			{currentItem ? (
-				<div className="edit-form">
+				<Form className="edit-form">
 					<h4>Item</h4>
-					<form>
-						<div className="form-group">
-							<label htmlFor="item_name">Name</label>
-							<input
+					<Form.Group>
+						<Form.Group>
+							<Form.Label htmlFor="item_name">Name</Form.Label>
+							<Form.Control
 								type="text"
-								className="form-control"
 								id="item_name"
 								value={currentItem.item_name}
 								onChange={handleInputChange}
 							/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="item_type">Item Type</label>
-							<input
+						</Form.Group>
+						<Form.Group>
+							<Form.Label htmlFor="item_type">
+								Item Type
+							</Form.Label>
+							<Form.Control
 								type="text"
-								className="form-control"
 								id="item_type"
 								value={currentItem.item_type}
 								onChange={handleInputChange}
 							/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="element">Element</label>
-							<input
+						</Form.Group>
+						<Form.Group>
+							<Form.Label htmlFor="element">Element</Form.Label>
+							<Form.Control
 								type="text"
-								className="form-control"
 								id="element"
 								value={currentItem.element}
 								onChange={handleInputChange}
 							/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="effect">Effect</label>
-							<input
+						</Form.Group>
+						<Form.Group>
+							<Form.Label htmlFor="effect">Effect</Form.Label>
+							<Form.Control
 								type="text"
-								className="form-control"
 								id="effect"
 								value={currentItem.effect}
 								onChange={handleInputChange}
 							/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="notes">Notes</label>
-							<input
+						</Form.Group>
+						<Form.Group>
+							<Form.Label htmlFor="notes">Notes</Form.Label>
+							<Form.Control
 								type="text"
-								className="form-control"
 								id="notes"
 								value={currentItem.notes}
 								onChange={handleInputChange}
 							/>
-						</div>
-						<div className="form-group">
-							<label>
+						</Form.Group>
+						<Form.Group>
+							<Form.Label>
 								<strong>Recommended?</strong>
-							</label>
+							</Form.Label>
 							{currentItem.recommended ? "YES" : "NO"}
-						</div>
-					</form>
+						</Form.Group>
+					</Form.Group>
 
 					{currentItem.recommended ? (
-						<button
-							className="badge badge-primary mr-2"
+						<Badge
+							bg="primary"
+							className="mr-2"
 							onClick={() => updateRecommended(false)}
 						>
 							NO
-						</button>
+						</Badge>
 					) : (
-						<button
-							className="badge badge-primary mr-2"
+						<Badge
+							bg="primary"
+							className="mr-2"
 							onClick={() => updateRecommended(true)}
 						>
 							YES
-						</button>
+						</Badge>
 					)}
 
-					<button
-						className="badge badge-danger mr-2"
-						onClick={deleteItem}
-					>
+					<Badge bg="danger" className="mr-2" onClick={deleteItem}>
 						DELETE
-					</button>
+					</Badge>
 
-					<button
+					<Button
 						type="submit"
-						className="badge badge-success"
+						variant="success"
 						onClick={updateItem}
 					>
 						UPDATE
-					</button>
+					</Button>
 					<p>{message}</p>
-				</div>
+				</Form>
 			) : (
-				<div>
+				<Container>
 					<br />
 					<p>Please click on an item</p>
-				</div>
+				</Container>
 			)}
-		</div>
+		</Container>
 	);
 };
 
