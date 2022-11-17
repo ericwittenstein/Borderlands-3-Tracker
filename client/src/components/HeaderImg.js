@@ -1,4 +1,4 @@
-import HeaderImgFile from "../images/bl3banner.jpg";
+import HeaderImgFile from "../images/bl3banner384x1920.jpg";
 import React from "react";
 import { Container } from "react-bootstrap";
 
@@ -11,7 +11,8 @@ export const HeaderImg = () => {
 					backgroundRepeat: "no-repeat",
 					backgroundPosition: "center",
 					backgroundSize: "cover",
-					minHeight: "550px",
+					maxHeight: "384px",
+					minHeight: "65px"
 				}}
 			>
 				{""}

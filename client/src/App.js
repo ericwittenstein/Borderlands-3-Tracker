@@ -13,16 +13,16 @@ function App() {
 	return (
 		<Container>
 			<HeaderImg />
-			<Navbar expand="lg" bg="light">
-				<Navbar.Brand to={"/items"}>EWITT</Navbar.Brand>
+			<Navbar expand="sm" bg="light" variant="light" >
+				<Navbar.Brand href="/items">EWITT</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basicNavbar" />
 				<Navbar.Collapse id="basicNavbar">
-					<Nav className="mr-auto">
-						<Nav.Item>
-							<Link to={"/items"}>Items</Link>
+					<Nav as="ul" className="justify-content-start">
+						<Nav.Item as="li">
+							<Nav.Link to={"/items"}>Items</Nav.Link>
 						</Nav.Item>
-						<Nav.Item>
-							<Link to={"/add"}>Add Item</Link>
+						<Nav.Item as="li">
+							<Nav.Link to={"/add"}>Add Item</Nav.Link>
 						</Nav.Item>
 					</Nav>
 				</Navbar.Collapse>
