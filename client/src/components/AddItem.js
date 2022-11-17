@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import ItemService from "../services/ItemService";
 
 // TODO: Refactor and double check EVERYTHING
@@ -12,7 +13,7 @@ const AddItem = () => {
 		element: "",
 		effect: "",
 		notes: "",
-		recommended: false
+		recommended: false,
 	};
 
 	const [item, setItem] = useState(initialItemState);
@@ -30,7 +31,7 @@ const AddItem = () => {
 			item_type: item.item_type,
 			element: item.element,
 			effect: item.effect,
-			notes: item.notes
+			notes: item.notes,
 		};
 
 		console.log("This is from the add-item saveItem function:" + data);
@@ -44,7 +45,7 @@ const AddItem = () => {
 					element: response.data.element,
 					effect: response.data.effect,
 					notes: response.data.notes,
-					recommended: response.data.recommended
+					recommended: response.data.recommended,
 				});
 				setSubmitted(true);
 				console.log(response.data);
@@ -65,21 +66,22 @@ const AddItem = () => {
 		// check if submitted. if false, show add form; if true, show add item button to reload form
 		// TODO: change some fields to dropdown menus, radio buttons, etc for input control
 
-		<div className="submit-form">
+		<Form>
 			{submitted ? (
-				<div>
+				<Form.Group controlId="formAddItem">
 					<h4>New item added successfully!</h4>
-					<button className="btn btn-success" onClick={newItem}>
+					<Button variant="success" onClick={newItem}>
 						Add New Item
-					</button>
-				</div>
+					</Button>
+				</Form.Group>
 			) : (
-				<div>
-					<div className="form-group">
-						<label htmlFor="item_name">Item Base Name</label>
-						<input
+				<Form.Group controlId="formAddItemInputs">
+					<Form.Group controlId="formName">
+						<Form.Label htmlFor="item_name">
+							Item Base Name
+						</Form.Label>
+						<Form.Control
 							type="text"
-							className="form-control"
 							id="item_name"
 							required
 							value={item.item_name}
@@ -87,12 +89,11 @@ const AddItem = () => {
 							name="item_name"
 							placeholder="Name"
 						/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="item_type">Item Type</label>
-						<input
+					</Form.Group>
+					<Form.Group controlId="formType">
+						<Form.Label htmlFor="item_type">Item Type</Form.Label>
+						<Form.Control
 							type="text"
-							className="form-control"
 							id="item_type"
 							required
 							value={item.item_type}
@@ -100,12 +101,13 @@ const AddItem = () => {
 							name="item_type"
 							placeholder="Item type"
 						/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="element">Elemental Effect</label>
-						<input
+					</Form.Group>
+					<Form.Group controlId="formElement">
+						<Form.Label htmlFor="element">
+							Elemental Effect
+						</Form.Label>
+						<Form.Control
 							type="text"
-							className="form-control"
 							id="element"
 							required
 							value={item.element}
@@ -113,12 +115,13 @@ const AddItem = () => {
 							name="element"
 							placeholder="Neutral/Fire/Corrosive/Shock/Cryo/Radiation"
 						/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="effect">Item Effect / Abiltiy</label>
-						<input
+					</Form.Group>
+					<Form.Group controlId="formEffect">
+						<Form.Label htmlFor="effect">
+							Item Effect / Abiltiy
+						</Form.Label>
+						<Form.Control
 							type="text"
-							className="form-control"
 							id="effect"
 							required
 							value={item.effect}
@@ -126,24 +129,24 @@ const AddItem = () => {
 							name="effect"
 							placeholder="Translated Red Text into plain English"
 						/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="notes">Miscellaneous Notes</label>
-						<input
+					</Form.Group>
+					<Form.Group controlId="formNotes">
+						<Form.Label htmlFor="notes">
+							Miscellaneous Notes
+						</Form.Label>
+						<Form.Control
 							type="text"
-							className="form-control"
 							id="notes"
 							value={item.notes}
 							onChange={handleInputChange}
 							name="notes"
 							placeholder="Notes, good for, bad for, etc."
 						/>
-					</div>
-					{/* <div className="form-group">
-						<label htmlFor="recommended">Recommended</label>
-						<input
+					</Form.Group>
+					{/* <Form.Group>
+						<Form.Label htmlFor="recommended">Recommended</Form.Label>
+						<Form.Control
 							type="text"
-							className="form-control"
 							id="recommended"
 							required
 							value={item.recommended}
@@ -151,14 +154,14 @@ const AddItem = () => {
 							name="recommended"
 							placeholder="Is this item recommended or not?"
 						/>
-					</div> */}
+					</Form.Group> */}
 
-					<button onClick={saveItem} className="btn btn-success">
+					<Button onClick={saveItem} type="submit" variant="success">
 						Submit
-					</button>
-				</div>
+					</Button>
+				</Form.Group>
 			)}
-		</div>
+		</Form>
 	);
 };
 

@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import ItemService from "../services/ItemService";
 import { Link } from "react-router-dom";
+import {
+	Button,
+	ListGroup,
+	Row,
+	Col,
+	Container,
+	InputGroup,
+	Form,
+	Badge,
+} from "react-bootstrap";
 
 // react component for list of items
 const ItemsList = () => {
@@ -71,117 +81,111 @@ const ItemsList = () => {
 
 	// function to render the component for the list of items
 	return (
-		<div className="list">
+		<ListGroup>
 			{/* Search Bar */}
-			<div className="col-md-10 row">
-				<div className="input-group mb-3">
-					<input
-						type="text"
-						className="form-control"
+			<Row md={10}>
+				<InputGroup className="mb-3">
+					<Form.Control
 						placeholder="Search by Item Name"
 						value={searchName}
 						onChange={onChangeSearchName}
 					/>
-					<div className="input-group-append">
-						<button
-							className="btn btn-outline-secondary"
-							type="button"
-							onClick={findByName}
-						>
-							Search
-						</button>
-					</div>
-				</div>
-			</div>
-			<div className="row">
-				<div className="col-3">
+					<Button variant="outline-secondary" onClick={findByName}>
+						Search
+					</Button>
+				</InputGroup>
+			</Row>
+			<Row>
+				<Col sm={3}>
 					<h4>Items List</h4>
 					{/* This should be the list of all the items */}
-					<ul className="list-group">
+					<ListGroup>
 						{items &&
 							items.map((item, index) => (
-								<li
+								<ListGroup.Item
 									className={
-										"list-group-item " +
-										(index === currentIndex ? "active" : "")
+										index === currentIndex ? "active" : ""
 									}
 									onClick={() => setActiveItem(item, index)}
 									key={index}
 								>
 									{item.item_name}
-								</li>
+								</ListGroup.Item>
 							))}
-					</ul>
+					</ListGroup>
 					{/* THIS IS THE DELETE ALL BUTTON, DO NOT USE UNLESS ABSOLUTELY NECESSARY */}
-					<button
-						className="m-3 btn btn-sm btn-danger"
+					<Button
+						variant="danger"
+						size="sm"
+						className="m-3"
 						onClick={removeAllItems}
 					>
 						Remove All
-					</button>
-				</div>
+					</Button>
+				</Col>
 				{/* This is the section that will render the details of the active item */}
-				<div className="col-8">
+				<Col sm={8}>
 					{currentItem ? (
-						<div>
+						<Container>
 							<h4>Item</h4>
-							<div>
+							<Row>
 								<label>
 									<strong>Name:</strong>
 								</label>{" "}
 								{currentItem.item_name}
-							</div>
-							<div>
+							</Row>
+							<Row>
 								<label>
 									<strong>Item Type:</strong>
 								</label>{" "}
 								{currentItem.item_type}
-							</div>
-							<div>
+							</Row>
+							<Row>
 								<label>
 									<strong>Element:</strong>
 								</label>{" "}
 								{currentItem.element}
-							</div>
-							<div>
+							</Row>
+							<Row>
 								<label>
 									<strong>Effect:</strong>
 								</label>{" "}
 								{currentItem.effect}
-							</div>
-							<div>
+							</Row>
+							<Row>
 								<label>
 									<strong>Notes:</strong>
 								</label>{" "}
 								{currentItem.notes}
-							</div>
-							<div>
+							</Row>
+							<Row>
 								<label>
 									<strong>Recommended:</strong>
 								</label>{" "}
 								{currentItem.recommended ? "YES" : "NO"}
-							</div>
+							</Row>
 
-							<Link
+							<Badge
+								as={Link}
 								to={"/items/" + currentItem.id}
-								className="badge badge-warning"
+								variant="warning"
 							>
 								Edit
-							</Link>
-						</div>
+							</Badge>
+						</Container>
 					) : (
 						// If no item selected, prompt for selection
-						<div>
+						<Container>
 							<br />
 							<p>
 								Please click on an item to pull up its
 								information sheet
 							</p>
-						</div>
+						</Container>
 					)}
-				</div>
-			</div>
-		</div>
+				</Col>
+			</Row>
+		</ListGroup>
 	);
 };
 
