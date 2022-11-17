@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.25d2eeda.css",
-    "main.js": "/static/js/main.396ef8fb.js",
+    "main.js": "/static/js/main.3ee90874.js",
+    "static/media/bl3banner.jpg": "/static/media/bl3banner.cc9384c56385d9446243.jpg",
     "index.html": "/index.html",
     "main.25d2eeda.css.map": "/static/css/main.25d2eeda.css.map",
-    "main.396ef8fb.js.map": "/static/js/main.396ef8fb.js.map"
+    "main.3ee90874.js.map": "/static/js/main.3ee90874.js.map"
   },
   "entrypoints": [
     "static/css/main.25d2eeda.css",
-    "static/js/main.396ef8fb.js"
+    "static/js/main.3ee90874.js"
   ]
 }

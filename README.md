@@ -5,6 +5,8 @@
 
 This is a website I created to help me manage and organize items that I've looked up in Borderlands 3. This game has a multitude of possible dropped loot variations, and as I play through, I often find myself looking up their abilities and trying to remember if I liked them or not on a previous playthrough. This app should allow me to spend less time googling and re-googling, and more time gaming!
 
+This app is deployed through Heroku and can be found [HERE](https://bl3tracker.herokuapp.com/)
+
 ## Table of Contents 
 
 * [Installation](#installation)

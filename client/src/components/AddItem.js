@@ -25,7 +25,7 @@ const AddItem = () => {
 	};
 
 	// item submission function
-	const saveItem = () => {
+	const saveItem = (subd) => {
 		var data = {
 			item_name: item.item_name,
 			item_type: item.item_type,
@@ -53,6 +53,8 @@ const AddItem = () => {
 			.catch((e) => {
 				console.log(e);
 			});
+	
+		subd.preventDefault();
 	};
 
 	// new item function
