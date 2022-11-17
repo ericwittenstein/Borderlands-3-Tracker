@@ -83,7 +83,7 @@ const ItemsList = () => {
 	return (
 		<ListGroup>
 			{/* Search Bar */}
-			<Row md={10}>
+			<Row md={6}>
 				<InputGroup className="mb-3">
 					<Form.Control
 						placeholder="Search by Item Name"
