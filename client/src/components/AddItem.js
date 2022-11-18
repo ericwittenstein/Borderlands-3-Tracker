@@ -78,7 +78,7 @@ const AddItem = () => {
 				</Form.Group>
 			) : (
 				<Form.Group controlId="formAddItemInputs">
-					<Form.Group controlId="formName">
+					<Form.Group controlId="formName itemrow">
 						<Form.Label htmlFor="item_name">
 							Item Base Name
 						</Form.Label>
@@ -92,7 +92,7 @@ const AddItem = () => {
 							placeholder="Name"
 						/>
 					</Form.Group>
-					<Form.Group controlId="formType">
+					<Form.Group controlId="formType itemrow">
 						<Form.Label htmlFor="item_type">Item Type</Form.Label>
 						<Form.Control
 							type="text"
@@ -104,7 +104,7 @@ const AddItem = () => {
 							placeholder="Item type"
 						/>
 					</Form.Group>
-					<Form.Group controlId="formElement">
+					<Form.Group controlId="formElement itemrow">
 						<Form.Label htmlFor="element">
 							Elemental Effect
 						</Form.Label>
@@ -118,7 +118,7 @@ const AddItem = () => {
 							placeholder="Neutral/Fire/Corrosive/Shock/Cryo/Radiation"
 						/>
 					</Form.Group>
-					<Form.Group controlId="formEffect">
+					<Form.Group controlId="formEffect itemrow">
 						<Form.Label htmlFor="effect">
 							Item Effect / Abiltiy
 						</Form.Label>
@@ -132,7 +132,7 @@ const AddItem = () => {
 							placeholder="Translated Red Text into plain English"
 						/>
 					</Form.Group>
-					<Form.Group controlId="formNotes">
+					<Form.Group controlId="formNotes itemrow">
 						<Form.Label htmlFor="notes">
 							Miscellaneous Notes
 						</Form.Label>

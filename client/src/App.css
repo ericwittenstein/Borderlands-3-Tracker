@@ -100,3 +100,11 @@
 .row {
 	margin: 0;
 }
+
+h4 {
+	margin-left: .5rem;
+}
+
+.itemrow {
+	margin: 0 .3rem;
+}

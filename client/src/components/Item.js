@@ -65,6 +65,8 @@ const Item = (props) => {
 			.catch((e) => {
 				console.log(e);
 			});
+
+		getItem(currentItem.id);
 	};
 
 	// function to push the new info to the item at the existing item id
@@ -97,7 +99,7 @@ const Item = (props) => {
 				<Form className="edit-form item-active">
 					<h4>Item</h4>
 					<Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_name">Name</Form.Label>
 							<Form.Control
 								type="text"
@@ -106,7 +108,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_type">
 								Item Type
 							</Form.Label>
@@ -117,7 +119,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="element">Element</Form.Label>
 							<Form.Control
 								type="text"
@@ -126,7 +128,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="effect">Effect</Form.Label>
 							<Form.Control
 								type="text"
@@ -135,7 +137,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="notes">Notes</Form.Label>
 							<Form.Control
 								type="text"
@@ -144,29 +146,31 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
-							<Form.Label>Recommended?</Form.Label>
-							{currentItem.recommended ? "   YES" : "   NO"}
+						<Form.Group className="itemrow">
+							<Form.Label>Recommended? </Form.Label>
+							{currentItem.recommended ? " YES" : " NO"}
+
+							{currentItem.recommended ? (
+								<button
+									className="badge badge-primary mr-1"
+									// variant="primary"
+									// className="mr-2"
+									onClick={() => updateRecommended(false)}
+								>
+									NO
+								</button>
+							) : (
+								<button
+									className="badge badge-primary mr-1"
+									// variant="primary"
+									// className="mr-2"
+									onClick={() => updateRecommended(true)}
+								>
+									YES
+								</button>
+							)}
 						</Form.Group>
 					</Form.Group>
-
-					{currentItem.recommended ? (
-						<Button
-							variant="primary"
-							// className="mr-2"
-							onClick={() => updateRecommended(false)}
-						>
-							NO
-						</Button>
-					) : (
-						<Button
-							variant="primary"
-							// className="mr-2"
-							onClick={() => updateRecommended(true)}
-						>
-							YES
-						</Button>
-					)}
 
 					{/* <Badge bg="danger" className="mr-2" onClick={deleteItem}>
 						DELETE
