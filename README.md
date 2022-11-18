@@ -49,11 +49,7 @@ https://github.com/ericwittenstein/Borderlands-3-Tracker
 
 ## Project Demo
 
-![App Demo1](client/build/AppDemo1.png)
-
-![App Demo2](client/build/AppDemo2.png)
-
-![App Demo3](client/build/AppDemo3.png)
+![App Demo](client/build/BL3T_Demo.gif)
 
 ## Contributing
 
