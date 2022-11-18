@@ -151,23 +151,21 @@ const Item = (props) => {
 							{currentItem.recommended ? " YES" : " NO"}
 
 							{currentItem.recommended ? (
-								<button
-									className="badge badge-primary mr-1"
-									// variant="primary"
+								<Button
+									variant="primary"
 									// className="mr-2"
 									onClick={() => updateRecommended(false)}
 								>
 									NO
-								</button>
+								</Button>
 							) : (
-								<button
-									className="badge badge-primary mr-1"
-									// variant="primary"
+								<Button
+									variant="primary"
 									// className="mr-2"
 									onClick={() => updateRecommended(true)}
 								>
 									YES
-								</button>
+								</Button>
 							)}
 						</Form.Group>
 					</Form.Group>

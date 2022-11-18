@@ -12,7 +12,7 @@ const create = (data) => {
 	return http.post("/items", data);
 };
 
-const update = (data, id) => {
+const update = (id, data) => {
 	return http.put(`/items/${id}`, data);
 };
 
