@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ItemService from "../services/ItemService";
-import { Link } from "react-router-dom";
 import {
 	Button,
 	ListGroup,
@@ -9,7 +8,6 @@ import {
 	Container,
 	InputGroup,
 	Form,
-	Badge,
 } from "react-bootstrap";
 
 // react component for list of items
@@ -114,19 +112,19 @@ const ItemsList = () => {
 							))}
 					</ListGroup>
 					{/* THIS IS THE DELETE ALL BUTTON, DO NOT USE UNLESS ABSOLUTELY NECESSARY */}
-					<Button
+					{/* <Button
 						variant="danger"
 						size="sm"
 						className="m-3"
 						onClick={removeAllItems}
 					>
 						Remove All
-					</Button>
+					</Button> */}
 				</Col>
 				{/* This is the section that will render the details of the active item */}
 				<Col sm={8}>
 					{currentItem ? (
-						<Container>
+						<Container className="item-active">
 							<h4>Item</h4>
 							<Row>
 								<label>
@@ -165,13 +163,12 @@ const ItemsList = () => {
 								{currentItem.recommended ? "YES" : "NO"}
 							</Row>
 
-							<Badge
-								as={Link}
+							<Button
 								to={"/items/" + currentItem.id}
-								variant="warning"
+								variant="primary"
 							>
 								Edit
-							</Badge>
+							</Button>
 						</Container>
 					) : (
 						// If no item selected, prompt for selection

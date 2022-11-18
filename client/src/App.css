@@ -73,8 +73,11 @@
 	margin: 1px;
 }
 
-.navbar-brand, .nav-link {
+.navbar-brand,
+.nav-link {
 	color: #b9101c;
+	font-weight: bold;
+	margin: 0 0.5rem;
 }
 
 .form-label {
@@ -84,4 +87,13 @@
 
 .form-control {
 	font-weight: 300;
+}
+
+.item-active {
+	background-color: #d0a148;
+	opacity: 0.3;
+}
+
+.btn-success, .btn-primary {
+	margin: 0.5rem .5rem .5rem 0;
 }

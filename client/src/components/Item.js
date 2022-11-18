@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Badge, Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 
 import ItemService from "../services/ItemService";
@@ -94,7 +94,7 @@ const Item = (props) => {
 	return (
 		<Container>
 			{currentItem ? (
-				<Form className="edit-form">
+				<Form className="edit-form item-active">
 					<h4>Item</h4>
 					<Form.Group>
 						<Form.Group>
@@ -146,34 +146,34 @@ const Item = (props) => {
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>
-								<strong>Recommended?</strong>
+								Recommended?
 							</Form.Label>
-							{currentItem.recommended ? "YES" : "NO"}
+							{currentItem.recommended ? "   YES" : "   NO"}
 						</Form.Group>
 					</Form.Group>
 
 					{currentItem.recommended ? (
-						<Badge
-							bg="primary"
-							className="mr-2"
-							onClick={() => updateRecommended(false)}
+						<Button
+							variant="primary"
+							// className="mr-2"
+							onClick={updateRecommended(false)}
 						>
 							NO
-						</Badge>
+						</Button>
 					) : (
-						<Badge
-							bg="primary"
-							className="mr-2"
-							onClick={() => updateRecommended(true)}
+						<Button
+							variant="primary"
+							// className="mr-2"
+							onClick={updateRecommended(true)}
 						>
 							YES
-						</Badge>
+						</Button>
 					)}
 
-					<Badge bg="danger" className="mr-2" onClick={deleteItem}>
+					{/* <Badge bg="danger" className="mr-2" onClick={deleteItem}>
 						DELETE
-					</Badge>
-
+					</Badge> */}
+					<br/>
 					<Button
 						type="submit"
 						variant="success"

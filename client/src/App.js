@@ -28,12 +28,12 @@ function App() {
 				<Navbar.Collapse id="basicNavbar">
 					<Nav className="justify-content-start">
 						<li>
-							<Link to={"/items"} className="nav-link">
+							<Link to={"/items"} className="nav-link link-dark">
 								Items
 							</Link>
 						</li>
 						<li>
-							<Link to={"/add"} className="nav-link">
+							<Link to={"/add"} className="nav-link link-dark">
 								Add Item
 							</Link>
 						</li>
