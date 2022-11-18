@@ -9,6 +9,7 @@ import {
 	InputGroup,
 	Form,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 // react component for list of items
 const ItemsList = () => {
@@ -128,43 +129,43 @@ const ItemsList = () => {
 							<h4>Item</h4>
 							<Row>
 								<label>
-									<strong>Name:</strong>
-								</label>{" "}
-								{currentItem.item_name}
+									<strong>Name: </strong>
+									{currentItem.item_name}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Item Type:</strong>
-								</label>{" "}
-								{currentItem.item_type}
+									<strong>Item Type: </strong>
+									{currentItem.item_type}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Element:</strong>
-								</label>{" "}
-								{currentItem.element}
+									<strong>Element: </strong>
+									{currentItem.element}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Effect:</strong>
-								</label>{" "}
-								{currentItem.effect}
+									<strong>Effect: </strong>
+									{currentItem.effect}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Notes:</strong>
-								</label>{" "}
-								{currentItem.notes}
+									<strong>Notes: </strong>
+									{currentItem.notes}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Recommended:</strong>
-								</label>{" "}
-								{currentItem.recommended ? "YES" : "NO"}
+									<strong>Recommended: </strong>
+									{currentItem.recommended ? "YES" : "NO"}
+								</label>
 							</Row>
 
 							<Button
-								to={"/items/" + currentItem.id}
+								href={"#/items/" + currentItem.id}
 								variant="primary"
 							>
 								Edit

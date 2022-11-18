@@ -90,7 +90,7 @@
 }
 
 .item-active {
-	background-color: #d0a148;
+	background-color: rgba(208, 161, 72, .3);
 }
 
 .btn-success, .btn-primary {

@@ -145,9 +145,7 @@ const Item = (props) => {
 							/>
 						</Form.Group>
 						<Form.Group>
-							<Form.Label>
-								Recommended?
-							</Form.Label>
+							<Form.Label>Recommended?</Form.Label>
 							{currentItem.recommended ? "   YES" : "   NO"}
 						</Form.Group>
 					</Form.Group>
@@ -156,7 +154,7 @@ const Item = (props) => {
 						<Button
 							variant="primary"
 							// className="mr-2"
-							onClick={updateRecommended(false)}
+							onClick={() => updateRecommended(false)}
 						>
 							NO
 						</Button>
@@ -164,7 +162,7 @@ const Item = (props) => {
 						<Button
 							variant="primary"
 							// className="mr-2"
-							onClick={updateRecommended(true)}
+							onClick={() => updateRecommended(true)}
 						>
 							YES
 						</Button>
@@ -173,7 +171,7 @@ const Item = (props) => {
 					{/* <Badge bg="danger" className="mr-2" onClick={deleteItem}>
 						DELETE
 					</Badge> */}
-					<br/>
+					<br />
 					<Button
 						type="submit"
 						variant="success"

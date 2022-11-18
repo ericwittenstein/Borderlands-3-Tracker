@@ -20,7 +20,7 @@ function App() {
 			}}
 		>
 			{/* <HeaderImg /> */}
-			<Navbar expand="sm" variant="dark" bg="light" className="px-0">
+			<Navbar expand="sm" variant="dark" bg="light" className="px-0 ">
 				<Navbar.Brand href="/#/items">
 					<img className="navLogo" src={logo} alt="logo" /> HOME
 				</Navbar.Brand>
