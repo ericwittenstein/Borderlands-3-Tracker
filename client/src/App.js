@@ -7,36 +7,49 @@ import { Routes, Route, Link } from "react-router-dom";
 import AddItem from "./components/AddItem";
 import Item from "./components/Item";
 import ItemsList from "./components/ItemsList";
-import { HeaderImg } from "./components/HeaderImg";
+// import { HeaderImg } from "./components/HeaderImg";
+import logo from "./images/base_icon.png";
+import bl3tBG from "./images/bl3tBG1440x2960.jpg";
 
 function App() {
 	return (
-		<Container>
-			<HeaderImg />
-			<Navbar expand="sm" bg="light" variant="light" >
-				<Navbar.Brand href="/items">EWITT</Navbar.Brand>
+		<div
+			className="bodyStyle"
+			style={{
+				backgroundImage: `url(${bl3tBG})`,
+			}}
+		>
+			{/* <HeaderImg /> */}
+			<Navbar expand="sm" variant="dark" bg="light" className="px-0">
+				<Navbar.Brand href="/#/items">
+					<img className="navLogo" src={logo} alt="logo" /> HOME
+				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basicNavbar" />
 				<Navbar.Collapse id="basicNavbar">
-					<Nav as="ul" className="justify-content-start">
-						<Nav.Item as="li">
-							<Nav.Link to={"/items"}>Items</Nav.Link>
-						</Nav.Item>
-						<Nav.Item as="li">
-							<Nav.Link to={"/add"}>Add Item</Nav.Link>
-						</Nav.Item>
+					<Nav className="justify-content-start">
+						<li>
+							<Link to={"/items"} className="nav-link">
+								Items
+							</Link>
+						</li>
+						<li>
+							<Link to={"/add"} className="nav-link">
+								Add Item
+							</Link>
+						</li>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
 
-			<Container className="mt-3">
+			<div className="mt-3">
 				<Routes>
 					<Route path="/" element={<ItemsList />} />
 					<Route path="/items" element={<ItemsList />} />
 					<Route path="/add" element={<AddItem />} />
 					<Route path="/items/:id" element={<Item />} />
 				</Routes>
-			</Container>
-		</Container>
+			</div>
+		</div>
 	);
 }
 
