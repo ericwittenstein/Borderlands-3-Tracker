@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ItemService from "../services/ItemService";
-import { Link } from "react-router-dom";
 import {
 	Button,
 	ListGroup,
@@ -9,8 +8,8 @@ import {
 	Container,
 	InputGroup,
 	Form,
-	Badge,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 // react component for list of items
 const ItemsList = () => {
@@ -83,7 +82,7 @@ const ItemsList = () => {
 	return (
 		<ListGroup>
 			{/* Search Bar */}
-			<Row md={10}>
+			<Row md={6}>
 				<InputGroup className="mb-3">
 					<Form.Control
 						placeholder="Search by Item Name"
@@ -114,69 +113,68 @@ const ItemsList = () => {
 							))}
 					</ListGroup>
 					{/* THIS IS THE DELETE ALL BUTTON, DO NOT USE UNLESS ABSOLUTELY NECESSARY */}
-					<Button
+					{/* <Button
 						variant="danger"
 						size="sm"
 						className="m-3"
 						onClick={removeAllItems}
 					>
 						Remove All
-					</Button>
+					</Button> */}
 				</Col>
 				{/* This is the section that will render the details of the active item */}
 				<Col sm={8}>
 					{currentItem ? (
-						<Container>
+						<Container className="item-active">
 							<h4>Item</h4>
 							<Row>
 								<label>
-									<strong>Name:</strong>
-								</label>{" "}
-								{currentItem.item_name}
+									<strong>Name: </strong>
+									{currentItem.item_name}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Item Type:</strong>
-								</label>{" "}
-								{currentItem.item_type}
+									<strong>Item Type: </strong>
+									{currentItem.item_type}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Element:</strong>
-								</label>{" "}
-								{currentItem.element}
+									<strong>Element: </strong>
+									{currentItem.element}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Effect:</strong>
-								</label>{" "}
-								{currentItem.effect}
+									<strong>Effect: </strong>
+									{currentItem.effect}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Notes:</strong>
-								</label>{" "}
-								{currentItem.notes}
+									<strong>Notes: </strong>
+									{currentItem.notes}
+								</label>
 							</Row>
 							<Row>
 								<label>
-									<strong>Recommended:</strong>
-								</label>{" "}
-								{currentItem.recommended ? "YES" : "NO"}
+									<strong>Recommended: </strong>
+									{currentItem.recommended ? "YES" : "NO"}
+								</label>
 							</Row>
 
-							<Badge
-								as={Link}
-								to={"/items/" + currentItem.id}
-								variant="warning"
+							<Button
+								href={"#/items/" + currentItem.id}
+								variant="primary"
 							>
 								Edit
-							</Badge>
+							</Button>
 						</Container>
 					) : (
 						// If no item selected, prompt for selection
 						<Container>
-							<br />
+							
 							<p>
 								Please click on an item to pull up its
 								information sheet

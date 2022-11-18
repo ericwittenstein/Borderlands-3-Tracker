@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Badge, Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 
 import ItemService from "../services/ItemService";
@@ -65,6 +65,8 @@ const Item = (props) => {
 			.catch((e) => {
 				console.log(e);
 			});
+
+		getItem(currentItem.id);
 	};
 
 	// function to push the new info to the item at the existing item id
@@ -94,10 +96,10 @@ const Item = (props) => {
 	return (
 		<Container>
 			{currentItem ? (
-				<Form className="edit-form">
+				<Form className="edit-form item-active">
 					<h4>Item</h4>
 					<Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_name">Name</Form.Label>
 							<Form.Control
 								type="text"
@@ -106,7 +108,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_type">
 								Item Type
 							</Form.Label>
@@ -117,7 +119,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="element">Element</Form.Label>
 							<Form.Control
 								type="text"
@@ -126,7 +128,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="effect">Effect</Form.Label>
 							<Form.Control
 								type="text"
@@ -135,7 +137,7 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
+						<Form.Group className="itemrow">
 							<Form.Label htmlFor="notes">Notes</Form.Label>
 							<Form.Control
 								type="text"
@@ -144,36 +146,34 @@ const Item = (props) => {
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
-						<Form.Group>
-							<Form.Label>
-								<strong>Recommended?</strong>
-							</Form.Label>
-							{currentItem.recommended ? "YES" : "NO"}
+						<Form.Group className="itemrow">
+							<Form.Label>Recommended? </Form.Label>
+							{currentItem.recommended ? " YES" : " NO"}
+
+							{currentItem.recommended ? (
+								<Button
+									variant="primary"
+									// className="mr-2"
+									onClick={() => updateRecommended(false)}
+								>
+									NO
+								</Button>
+							) : (
+								<Button
+									variant="primary"
+									// className="mr-2"
+									onClick={() => updateRecommended(true)}
+								>
+									YES
+								</Button>
+							)}
 						</Form.Group>
 					</Form.Group>
 
-					{currentItem.recommended ? (
-						<Badge
-							bg="primary"
-							className="mr-2"
-							onClick={() => updateRecommended(false)}
-						>
-							NO
-						</Badge>
-					) : (
-						<Badge
-							bg="primary"
-							className="mr-2"
-							onClick={() => updateRecommended(true)}
-						>
-							YES
-						</Badge>
-					)}
-
-					<Badge bg="danger" className="mr-2" onClick={deleteItem}>
+					{/* <Badge bg="danger" className="mr-2" onClick={deleteItem}>
 						DELETE
-					</Badge>
-
+					</Badge> */}
+					<br />
 					<Button
 						type="submit"
 						variant="success"
