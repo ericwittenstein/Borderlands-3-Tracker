@@ -174,7 +174,7 @@ const ItemsList = () => {
 					) : (
 						// If no item selected, prompt for selection
 						<Container>
-							<br />
+							
 							<p>
 								Please click on an item to pull up its
 								information sheet
