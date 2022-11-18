@@ -15,11 +15,11 @@ This app is deployed through Heroku and can be found [HERE](https://bl3tracker.h
 
 * [License](#license)
 
+* [Demo](#project-demo)
+
 * [GitHub Repo](#github-repo)
 
 * [Contributing](#contributing)
-
-* [Testing](#testing)
 
 * [Questions](#questions-and-contact-info)
 
@@ -49,23 +49,11 @@ https://github.com/ericwittenstein/Borderlands-3-Tracker
 
 ## Project Demo
 
-![App Demo1](client/build/AppDemo1.png)
-
-![App Demo2](client/build/AppDemo2.png)
-
-![App Demo3](client/build/AppDemo3.png)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QCxUPJYn90U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Contributing
 
 Not currently accepting contributions
-
-## Testing
-
-To initiate the unit tests for this project, run the following command in the console/command line: 
-
-```
-npm run test
-```
 
 ## Questions and Contact Info
 
