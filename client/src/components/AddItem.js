@@ -90,6 +90,7 @@ const AddItem = () => {
 							onChange={handleInputChange}
 							name="item_name"
 							placeholder="Name"
+							autoComplete="off"
 						/>
 					</Form.Group>
 					<Form.Group controlId="formType itemrow">
@@ -130,6 +131,7 @@ const AddItem = () => {
 							onChange={handleInputChange}
 							name="effect"
 							placeholder="Translated Red Text into plain English"
+							autoComplete="off"
 						/>
 					</Form.Group>
 					<Form.Group controlId="formNotes itemrow">
@@ -143,6 +145,7 @@ const AddItem = () => {
 							onChange={handleInputChange}
 							name="notes"
 							placeholder="Notes, good for, bad for, etc."
+							autoComplete="off"
 						/>
 					</Form.Group>
 					{/* <Form.Group>

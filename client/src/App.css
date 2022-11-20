@@ -55,10 +55,6 @@
 	margin: auto;
 }
 
-/* Container {
-	width: 95%;
-} */
-
 .bodyStyle {
 	padding: 0.5rem;
 	height: auto;
@@ -107,4 +103,12 @@ h4 {
 
 .itemrow {
 	margin: 0 .4rem;
+}
+
+.toggler {
+	margin-right: .5rem;
+}
+
+.navbar {
+	border-radius: .375rem;
 }

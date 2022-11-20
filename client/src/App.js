@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./App.css";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import AddItem from "./components/AddItem";
@@ -19,12 +19,11 @@ function App() {
 				backgroundImage: `url(${bl3tBG})`,
 			}}
 		>
-			{/* <HeaderImg /> */}
-			<Navbar expand="sm" variant="dark" bg="light" className="px-0 ">
+			<Navbar expand="sm" variant="light" bg="warning" className="px-0 ">
 				<Navbar.Brand href="/#/items">
 					<img className="navLogo" src={logo} alt="logo" /> HOME
 				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basicNavbar" />
+				<Navbar.Toggle className="toggler" aria-controls="basicNavbar" />
 				<Navbar.Collapse id="basicNavbar">
 					<Nav className="justify-content-start">
 						<li>
