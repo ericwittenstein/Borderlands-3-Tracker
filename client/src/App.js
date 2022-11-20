@@ -7,7 +7,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import AddItem from "./components/AddItem";
 import Item from "./components/Item";
 import ItemsList from "./components/ItemsList";
-// import { HeaderImg } from "./components/HeaderImg";
 import logo from "./images/base_icon.png";
 import bl3tBG from "./images/bl3tBG1440x2960.jpg";
 
