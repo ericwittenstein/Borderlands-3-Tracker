@@ -9,19 +9,17 @@ This app is deployed through Heroku and can be found [HERE](https://bl3tracker.h
 
 ## Table of Contents 
 
-* [Installation](#installation)
-
-* [Usage](#usage)
-
-* [License](#license)
-
-* [Demo](#project-demo)
-
-* [GitHub Repo](#github-repo)
-
-* [Contributing](#contributing)
-
-* [Questions](#questions-and-contact-info)
+- [Borderlands 3 Tracker](#borderlands-3-tracker)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [GitHub Repo](#github-repo)
+  - [Project Demo](#project-demo)
+  - [Contributing](#contributing)
+  - [Questions and Contact Info](#questions-and-contact-info)
+    - [Eric Wittenstein](#eric-wittenstein)
 
 ## Installation
 
@@ -49,7 +47,7 @@ https://github.com/ericwittenstein/Borderlands-3-Tracker
 
 ## Project Demo
 
-![App Demo](/client/public/BL3T_Demo.gif)
+![App Demo](/demo/BL3T_Demo.gif)
 
 ## Contributing
 
