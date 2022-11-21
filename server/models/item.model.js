@@ -2,6 +2,7 @@ module.exports = (sequelize, Sequelize) => {
 	const Item = sequelize.define("item", {
 		item_name: {
 			type: Sequelize.STRING,
+			unique: true
 		},
 		item_type: {
 			type: Sequelize.STRING,
