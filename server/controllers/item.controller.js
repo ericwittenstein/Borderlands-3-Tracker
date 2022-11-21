@@ -1,4 +1,4 @@
-const db = require("../models/index");
+const db = require("../models");
 const Item = db.items;
 const Op = db.Sequelize.Op;
 
@@ -11,7 +11,7 @@ exports.create = (req, res) => {
 		element: req.body.element,
 		effect: req.body.effect,
 		notes: req.body.notes,
-		recommended: req.body.recommended ? req.body.recommended : false
+		recommended: req.body.recommended ? req.body.recommended : false,
 	};
 
 	console.log("this is the req from the item controller: " + req);
@@ -38,7 +38,9 @@ exports.create = (req, res) => {
 // retrieve all items from db
 exports.findAll = (req, res) => {
 	const item_name = req.query.item_name;
-	var condition = item_name ? { item_name: { [Op.like]: `%${item_name}%` } } : null;
+	var condition = item_name
+		? { item_name: { [Op.like]: `%${item_name}%` } }
+		: null;
 
 	Item.findAll({ where: condition })
 		.then((data) => {
@@ -128,6 +130,7 @@ exports.deleteAll = (req, res) => {
 		});
 };
 
+// find all items that are recommended
 exports.findAllRecommended = (req, res) => {
 	Item.findAll({ where: { recommended: true } })
 		.then((data) => {
