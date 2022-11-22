@@ -107,19 +107,37 @@ const Item = (props) => {
 								name="item_name"
 								value={currentItem.item_name}
 								onChange={handleInputChange}
+								autoComplete="off"
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_type">
 								Item Type
 							</Form.Label>
-							<Form.Control
-								type="input"
+							<Form.Select
 								id="item_type"
-								name="item_type"
+								required
 								value={currentItem.item_type}
 								onChange={handleInputChange}
-							/>
+								name="item_type"
+							>
+								<option
+									value={`${currentItem.item_type}`}
+								>{`${currentItem.item_type}`}</option>
+								<option value={"Handgun"}>Handgun</option>
+								<option value={"Assault Rifle"}>
+									Assault Rifle
+								</option>
+								<option value={"SMG"}>
+									Submachine Gun (SMG)
+								</option>
+								<option value={"Shotgun"}>Shotgun</option>
+								<option value={"Sniper"}>Sniper</option>
+								<option value={"Heavy"}>Heavy</option>
+								<option value={"Grenade"}>Grenade</option>
+								<option value={"Shield"}>Shield</option>
+								<option value={"Class Mod"}>Class Mod</option>
+							</Form.Select>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="element">Element</Form.Label>
@@ -139,6 +157,7 @@ const Item = (props) => {
 								name="effect"
 								value={currentItem.effect}
 								onChange={handleInputChange}
+								autoComplete="off"
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
@@ -149,6 +168,7 @@ const Item = (props) => {
 								name="notes"
 								value={currentItem.notes}
 								onChange={handleInputChange}
+								autoComplete="off"
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
