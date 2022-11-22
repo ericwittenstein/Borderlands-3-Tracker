@@ -121,19 +121,28 @@ const Item = (props) => {
 								name="item_type"
 							>
 								<option>Choose Item Type</option>
-								<option value={"Handgun"}>Handgun</option>
-								<option value={"Assault Rifle"}>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Handgun") ? selected : "" )} value={"Handgun"}>Handgun</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Assault Rifle") ? selected : "" )} value={"Assault Rifle"}>
 									Assault Rifle
 								</option>
-								<option value={"SMG"}>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "SMG") ? selected : "" )} value={"SMG"}>
 									Submachine Gun (SMG)
 								</option>
-								<option value={"Shotgun"}>Shotgun</option>
-								<option value={"Sniper"}>Sniper</option>
-								<option value={"Heavy"}>Heavy</option>
-								<option value={"Grenade"}>Grenade</option>
-								<option value={"Shield"}>Shield</option>
-								<option value={"Class Mod"}>Class Mod</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Shotgun") ? selected : "" )} value={"Shotgun"}>Shotgun</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Sniper") ? selected : "" )} value={"Sniper"}>Sniper</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Heavy") ? selected : "" )} value={"Heavy"}>Heavy</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option  {...((currentItem.item_type === "Grenade") ? selected : "" )}value={"Grenade"}>Grenade</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option  {...((currentItem.item_type === "Shield") ? selected : "" )}value={"Shield"}>Shield</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Class Mod") ? selected : "" )} value={"Class Mod"}>Class Mod</option>
 							</Form.Select>
 						</Form.Group>
 						<Form.Group className="itemrow">
