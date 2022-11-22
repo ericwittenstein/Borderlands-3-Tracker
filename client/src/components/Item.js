@@ -102,11 +102,11 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_name">Name</Form.Label>
 							<Form.Control
-								as="textarea"
 								type="text"
 								id="item_name"
 								value={currentItem.item_name}
 								onChange={handleInputChange}
+								placeholder={`${currentItem.item_name}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
@@ -114,41 +114,41 @@ const Item = (props) => {
 								Item Type
 							</Form.Label>
 							<Form.Control
-								as="textarea"
 								type="text"
 								id="item_type"
 								value={currentItem.item_type}
 								onChange={handleInputChange}
+								placeholder={`${currentItem.item_type}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="element">Element</Form.Label>
 							<Form.Control
-								as="textarea"
 								type="text"
 								id="element"
 								value={currentItem.element}
 								onChange={handleInputChange}
+								placeholder={`${currentItem.element}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="effect">Effect</Form.Label>
 							<Form.Control
-								as="textarea"
 								type="text"
 								id="effect"
 								value={currentItem.effect}
 								onChange={handleInputChange}
+								placeholder={`${currentItem.effect}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="notes">Notes</Form.Label>
 							<Form.Control
-								as="textarea"
 								type="text"
 								id="notes"
 								value={currentItem.notes}
 								onChange={handleInputChange}
+								placeholder={`${currentItem.notes}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
