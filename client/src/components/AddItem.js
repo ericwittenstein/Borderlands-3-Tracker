@@ -105,8 +105,8 @@ const AddItem = () => {
 						>
 							<option>Choose Item Type</option>
 							<option value={"Handgun"}>Handgun</option>
-							<option value={"Assault Rifle"}>
-								Assault Rifle
+							<option value={"Rifle"}>
+								Rifle
 							</option>
 							<option value={"SMG"}>Submachine Gun (SMG)</option>
 							<option value={"Shotgun"}>Shotgun</option>

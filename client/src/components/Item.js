@@ -124,8 +124,8 @@ const Item = (props) => {
 								{/* eslint-disable-next-line no-undef */}
 								<option {...((currentItem.item_type === "Handgun") ? selected : "" )} value={"Handgun"}>Handgun</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "Assault Rifle") ? selected : "" )} value={"Assault Rifle"}>
-									Assault Rifle
+								<option {...((currentItem.item_type === "Rifle") ? selected : "" )} value={"Rifle"}>
+									Rifle
 								</option>
 								{/* eslint-disable-next-line no-undef */}
 								<option {...((currentItem.item_type === "SMG") ? selected : "" )} value={"SMG"}>
