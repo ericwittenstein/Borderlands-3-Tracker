@@ -112,3 +112,8 @@ h4 {
 .navbar {
 	border-radius: .375rem;
 }
+
+.text-muted {
+	margin-left: .375rem;
+	text-decoration: wavy;
+}

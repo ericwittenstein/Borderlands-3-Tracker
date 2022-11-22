@@ -53,7 +53,7 @@ const AddItem = () => {
 			.catch((e) => {
 				console.log(e);
 			});
-	
+
 		subd.preventDefault();
 	};
 
@@ -95,15 +95,27 @@ const AddItem = () => {
 					</Form.Group>
 					<Form.Group controlId="formType itemrow">
 						<Form.Label htmlFor="item_type">Item Type</Form.Label>
-						<Form.Control
-							type="text"
+						<Form.Select
 							id="item_type"
 							required
 							value={item.item_type}
 							onChange={handleInputChange}
 							name="item_type"
 							placeholder="Item type"
-						/>
+						>
+							<option>Choose Item Type</option>
+							<option value={"Handgun"}>Handgun</option>
+							<option value={"Assault Rifle"}>
+								Assault Rifle
+							</option>
+							<option value={"SMG"}>Submachine Gun (SMG)</option>
+							<option value={"Shotgun"}>Shotgun</option>
+							<option value={"Sniper"}>Sniper</option>
+							<option value={"Heavy"}>Heavy</option>
+							<option value={"Grenade"}>Grenade</option>
+							<option value={"Shield"}>Shield</option>
+							<option value={"Class Mod"}>Class Mod</option>
+						</Form.Select>
 					</Form.Group>
 					<Form.Group controlId="formElement itemrow">
 						<Form.Label htmlFor="element">
@@ -117,7 +129,12 @@ const AddItem = () => {
 							onChange={handleInputChange}
 							name="element"
 							placeholder="Neutral/Incendiary/Corrosive/Shock/Cryo/Radiation"
+							aria-describedby="elementHelpText"
 						/>
+						<Form.Text id="elementHelpText" muted>
+							Write all elements the items could be, seperated by
+							a slash. If any, write "Any"
+						</Form.Text>
 					</Form.Group>
 					<Form.Group controlId="formEffect itemrow">
 						<Form.Label htmlFor="effect">
@@ -125,6 +142,7 @@ const AddItem = () => {
 						</Form.Label>
 						<Form.Control
 							type="text"
+							rows={3}
 							id="effect"
 							required
 							value={item.effect}
