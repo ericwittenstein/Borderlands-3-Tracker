@@ -102,9 +102,10 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_name">Name</Form.Label>
 							<Form.Control
-								type="text"
+								type="input"
 								id="item_name"
-								defaultValue={currentItem.item_name}
+								name="item_name"
+								value={currentItem.item_name}
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
@@ -113,36 +114,40 @@ const Item = (props) => {
 								Item Type
 							</Form.Label>
 							<Form.Control
-								type="text"
+								type="input"
 								id="item_type"
-								defaultValue={currentItem.item_type}
+								name="item_type"
+								value={currentItem.item_type}
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="element">Element</Form.Label>
 							<Form.Control
-								type="text"
+								type="input"
 								id="element"
-								defaultValue={currentItem.element}
+								name="element"
+								value={currentItem.element}
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="effect">Effect</Form.Label>
 							<Form.Control
-								type="text"
+								type="input"
 								id="effect"
-								defaultValue={currentItem.effect}
+								name="effect"
+								value={currentItem.effect}
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="notes">Notes</Form.Label>
 							<Form.Control
-								type="text"
+								type="input"
 								id="notes"
-								defaultValue={currentItem.notes}
+								name="notes"
+								value={currentItem.notes}
 								onChange={handleInputChange}
 							/>
 						</Form.Group>
