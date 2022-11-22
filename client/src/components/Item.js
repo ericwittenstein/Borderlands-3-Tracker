@@ -102,31 +102,55 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_name">Name</Form.Label>
 							<Form.Control
-								as="textarea"
-								type="text"
+								type="input"
 								id="item_name"
+								name="item_name"
 								value={currentItem.item_name}
 								onChange={handleInputChange}
+								autoComplete="off"
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_type">
 								Item Type
 							</Form.Label>
-							<Form.Control
-								as="textarea"
-								type="text"
+							<Form.Select
 								id="item_type"
 								value={currentItem.item_type}
 								onChange={handleInputChange}
-							/>
+								name="item_type"
+							>
+								<option>Choose Item Type</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Handgun") ? selected : "" )} value={"Handgun"}>Handgun</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Assault Rifle") ? selected : "" )} value={"Assault Rifle"}>
+									Assault Rifle
+								</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "SMG") ? selected : "" )} value={"SMG"}>
+									Submachine Gun (SMG)
+								</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Shotgun") ? selected : "" )} value={"Shotgun"}>Shotgun</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Sniper") ? selected : "" )} value={"Sniper"}>Sniper</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Heavy") ? selected : "" )} value={"Heavy"}>Heavy</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option  {...((currentItem.item_type === "Grenade") ? selected : "" )}value={"Grenade"}>Grenade</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option  {...((currentItem.item_type === "Shield") ? selected : "" )}value={"Shield"}>Shield</option>
+								{/* eslint-disable-next-line no-undef */}
+								<option {...((currentItem.item_type === "Class Mod") ? selected : "" )} value={"Class Mod"}>Class Mod</option>
+							</Form.Select>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="element">Element</Form.Label>
 							<Form.Control
-								as="textarea"
-								type="text"
+								type="input"
 								id="element"
+								name="element"
 								value={currentItem.element}
 								onChange={handleInputChange}
 							/>
@@ -134,21 +158,23 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="effect">Effect</Form.Label>
 							<Form.Control
-								as="textarea"
-								type="text"
+								type="input"
 								id="effect"
+								name="effect"
 								value={currentItem.effect}
 								onChange={handleInputChange}
+								autoComplete="off"
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="notes">Notes</Form.Label>
 							<Form.Control
-								as="textarea"
-								type="text"
+								type="input"
 								id="notes"
+								name="notes"
 								value={currentItem.notes}
 								onChange={handleInputChange}
+								autoComplete="off"
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
