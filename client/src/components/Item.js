@@ -102,6 +102,7 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="item_name">Name</Form.Label>
 							<Form.Control
+								as="textarea"
 								type="text"
 								id="item_name"
 								value={currentItem.item_name}
@@ -113,6 +114,7 @@ const Item = (props) => {
 								Item Type
 							</Form.Label>
 							<Form.Control
+								as="textarea"
 								type="text"
 								id="item_type"
 								value={currentItem.item_type}
@@ -122,6 +124,7 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="element">Element</Form.Label>
 							<Form.Control
+								as="textarea"
 								type="text"
 								id="element"
 								value={currentItem.element}
@@ -131,6 +134,7 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="effect">Effect</Form.Label>
 							<Form.Control
+								as="textarea"
 								type="text"
 								id="effect"
 								value={currentItem.effect}
@@ -140,6 +144,7 @@ const Item = (props) => {
 						<Form.Group className="itemrow">
 							<Form.Label htmlFor="notes">Notes</Form.Label>
 							<Form.Control
+								as="textarea"
 								type="text"
 								id="notes"
 								value={currentItem.notes}
