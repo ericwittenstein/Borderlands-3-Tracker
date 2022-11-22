@@ -116,7 +116,7 @@ const AddItem = () => {
 							value={item.element}
 							onChange={handleInputChange}
 							name="element"
-							placeholder="Neutral/Fire/Corrosive/Shock/Cryo/Radiation"
+							placeholder="Neutral/Incendiary/Corrosive/Shock/Cryo/Radiation"
 						/>
 					</Form.Group>
 					<Form.Group controlId="formEffect itemrow">
