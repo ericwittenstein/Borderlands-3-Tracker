@@ -104,9 +104,8 @@ const Item = (props) => {
 							<Form.Control
 								type="text"
 								id="item_name"
-								value={currentItem.item_name}
+								defaultValue={currentItem.item_name}
 								onChange={handleInputChange}
-								placeholder={`${currentItem.item_name}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
@@ -116,9 +115,8 @@ const Item = (props) => {
 							<Form.Control
 								type="text"
 								id="item_type"
-								value={currentItem.item_type}
+								defaultValue={currentItem.item_type}
 								onChange={handleInputChange}
-								placeholder={`${currentItem.item_type}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
@@ -126,9 +124,8 @@ const Item = (props) => {
 							<Form.Control
 								type="text"
 								id="element"
-								value={currentItem.element}
+								defaultValue={currentItem.element}
 								onChange={handleInputChange}
-								placeholder={`${currentItem.element}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
@@ -136,9 +133,8 @@ const Item = (props) => {
 							<Form.Control
 								type="text"
 								id="effect"
-								value={currentItem.effect}
+								defaultValue={currentItem.effect}
 								onChange={handleInputChange}
-								placeholder={`${currentItem.effect}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
@@ -146,9 +142,8 @@ const Item = (props) => {
 							<Form.Control
 								type="text"
 								id="notes"
-								value={currentItem.notes}
+								defaultValue={currentItem.notes}
 								onChange={handleInputChange}
-								placeholder={`${currentItem.notes}`}
 							/>
 						</Form.Group>
 						<Form.Group className="itemrow">
