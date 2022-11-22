@@ -116,14 +116,11 @@ const Item = (props) => {
 							</Form.Label>
 							<Form.Select
 								id="item_type"
-								required
 								value={currentItem.item_type}
 								onChange={handleInputChange}
 								name="item_type"
 							>
-								<option
-									value={`${currentItem.item_type}`}
-								>{`${currentItem.item_type}`}</option>
+								<option>Choose Item Type</option>
 								<option value={"Handgun"}>Handgun</option>
 								<option value={"Assault Rifle"}>
 									Assault Rifle
