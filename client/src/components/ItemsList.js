@@ -8,9 +8,9 @@ import {
 	Container,
 	InputGroup,
 	Form,
-	Pagination,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
 
 // react component for list of items
 const ItemsList = () => {
@@ -141,7 +141,34 @@ const ItemsList = () => {
 				<Col sm={3}>
 					<h4>Items List</h4>
 					{/* Adding pagination elements */}
-					
+
+					<div className="mt-3">
+						{"Items per page: "}
+						<Form.Select
+							aria-label="Items per page dropdown"
+							onChange={handlePageSizeChange}
+							value={pageSize}
+						>
+							{pageSizes.map((size) => (
+								<option key={size} value={size}>
+									{size}
+								</option>
+							))}
+						</Form.Select>
+
+						<Pagination
+							className="my-3"
+							count={count}
+							page={page}
+							siblingCount={1}
+							boundaryCount={1}
+							variant="outlined"
+							shape="rounded"
+							color="primary"
+							onChange={handlePageChange}
+						/>
+					</div>
+
 					{/* This should be the list of all the items */}
 					<ListGroup>
 						{items &&
