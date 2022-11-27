@@ -2,6 +2,23 @@ const db = require("../models");
 const Item = db.items;
 const Op = db.Sequelize.Op;
 
+// pagination setup to default feth 10 items and make the default page index 0
+const getPagination = (page, size) => {
+	const limit = size ? +size : 10;
+	const offset = page ? page * limit : 0;
+
+	return { limit, offset };
+};
+
+// function to map default response to necessary structure for pagination
+const getPagingData = (data, page, limit) => {
+	const { count: totalItems, row: items } = data;
+	const currentPage = page ? +page : 0;
+	const totalPages = Math.ceil(totalItems / limit);
+
+	return { totalItems, items, totalPages, currentPage };
+};
+
 // create and save new item
 exports.create = (req, res) => {
 	// create new item
@@ -37,14 +54,17 @@ exports.create = (req, res) => {
 
 // retrieve all items from db
 exports.findAll = (req, res) => {
-	const item_name = req.query.item_name;
+	const { page, size, item_name } = req.query;
 	var condition = item_name
 		? { item_name: { [Op.like]: `%${item_name}%` } }
 		: null;
 
-	Item.findAll({ where: condition })
+	const { limit, offset } = getPagination(page, size);
+
+	Item.findAndCountAll({ where: condition, limit, offset })
 		.then((data) => {
-			res.status(200).json(data);
+			const response = getPagingData(data, page, limit);
+			res.status(200).json(response);
 		})
 		.catch((err) => {
 			res.status(500).json({
@@ -132,9 +152,13 @@ exports.deleteAll = (req, res) => {
 
 // find all items that are recommended
 exports.findAllRecommended = (req, res) => {
-	Item.findAll({ where: { recommended: true } })
+	const {page, size} = req.query;
+	const {limit, offset} = getPagination(page, size);
+
+	Item.findAndCountAll({ where: { recommended: true }, limit, offset })
 		.then((data) => {
-			res.status(200).json(data);
+			const response = getPagingData(data, page, limit);
+			res.status(200).json(response);
 		})
 		.catch((err) => {
 			res.status(500).json({
