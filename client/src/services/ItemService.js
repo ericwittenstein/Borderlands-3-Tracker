@@ -1,7 +1,7 @@
 import http from "../http-common";
 
 const getAll = (params) => {
-	return http.get("/items", {params});
+	return http.get("/items", { params });
 };
 
 const get = (id) => {
@@ -35,7 +35,7 @@ const ItemService = {
 	update,
 	remove,
 	removeAll,
-	findByName
+	findByName,
 };
 
 export default ItemService;

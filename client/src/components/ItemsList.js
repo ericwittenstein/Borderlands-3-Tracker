@@ -70,7 +70,7 @@ const ItemsList = () => {
 			});
 	};
 
-	useEffect(retrieveItems, [page, pageSize]);
+	useEffect(retrieveItems, [page, pageSize, searchName]);
 
 	// change the page
 	const handlePageChange = (e, value) => {
@@ -144,7 +144,7 @@ const ItemsList = () => {
 
 					<div className="mt-3">
 						{"Items per page: "}
-						<Form.Select
+						<select
 							aria-label="Items per page dropdown"
 							onChange={handlePageSizeChange}
 							value={pageSize}
@@ -154,7 +154,7 @@ const ItemsList = () => {
 									{size}
 								</option>
 							))}
-						</Form.Select>
+						</select>
 
 						<Pagination
 							className="my-3"
