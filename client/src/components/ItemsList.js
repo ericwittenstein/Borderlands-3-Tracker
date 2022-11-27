@@ -137,12 +137,11 @@ const ItemsList = () => {
 					</Button>
 				</InputGroup>
 			</Row>
-			<Row>
-				<Col sm={3}>
-					<h4>Items List</h4>
-					{/* Adding pagination elements */}
+			<Row md={6}>
+				{/* Adding pagination elements */}
 
-					<div className="mt-3">
+				<div className="mb-3">
+					<Col>
 						{"Items per page: "}
 						<select
 							aria-label="Items per page dropdown"
@@ -155,7 +154,8 @@ const ItemsList = () => {
 								</option>
 							))}
 						</select>
-
+					</Col>
+					<Col>
 						<Pagination
 							className="my-3"
 							count={count}
@@ -167,7 +167,12 @@ const ItemsList = () => {
 							color="primary"
 							onChange={handlePageChange}
 						/>
-					</div>
+					</Col>
+				</div>
+			</Row>
+			<Row>
+				<Col sm={3}>
+					<h4>Items List</h4>
 
 					{/* This should be the list of all the items */}
 					<ListGroup>
