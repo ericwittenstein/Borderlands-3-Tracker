@@ -5,6 +5,12 @@
 	"proxy": "http://localhost:8080",
 	"homepage": "https://bl3tracker.herokuapp.com",
 	"dependencies": {
+		"@emotion/react": "^11.10.5",
+		"@emotion/styled": "^11.10.5",
+		"@mui/base": "^5.0.0-alpha.107",
+		"@mui/lab": "^5.0.0-alpha.109",
+		"@mui/material": "^5.10.15",
+		"@mui/styled-engine": "^5.10.14",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
