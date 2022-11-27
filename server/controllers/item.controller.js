@@ -12,7 +12,7 @@ const getPagination = (page, size) => {
 
 // function to map default response to necessary structure for pagination
 const getPagingData = (data, page, limit) => {
-	const { count: totalItems, row: items } = data;
+	const { count: totalItems, rows: items } = data;
 	const currentPage = page ? +page : 0;
 	const totalPages = Math.ceil(totalItems / limit);
 
