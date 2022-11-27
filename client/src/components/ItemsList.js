@@ -8,6 +8,7 @@ import {
 	Container,
 	InputGroup,
 	Form,
+	Pagination,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -18,9 +19,11 @@ const ItemsList = () => {
 	const [currentIndex, setCurrentIndex] = useState(-1);
 	const [searchName, setSearchName] = useState("");
 
-	useEffect(() => {
-		retrieveItems();
-	}, []);
+	const [page, setPage] = useState(1);
+	const [count, setCount] = useState(0);
+	const [pageSize, setPageSize] = useState(10);
+
+	const pageSizes = [5, 10, 20];
 
 	// tracker for value changes and assignment for search bar
 	const onChangeSearchName = (e) => {
@@ -28,16 +31,56 @@ const ItemsList = () => {
 		setSearchName(searchName);
 	};
 
+	// function to handle if there are certain request params, add them to the params to send
+	const getRequestParams = (searchName, page, pageSize) => {
+		let params = {};
+
+		if (searchName) {
+			params["item_name"] = searchName;
+		}
+
+		if (page) {
+			params["page"] = page - 1;
+		}
+
+		if (pageSize) {
+			params["size"] = pageSize;
+		}
+
+		return params;
+	};
+
 	// function to retrieve list of items
 	const retrieveItems = () => {
-		ItemService.getAll()
+		// call to the search name, page, and pagesize states and turn them into the params object
+		const params = getRequestParams(searchName, page, pageSize);
+
+		ItemService.getAll(params)
 			.then((response) => {
-				setItems(response.data);
+				// setItems(response.data);
+				const { items, totalPages } = response.data;
+				setItems(items);
+				setCount(totalPages);
 				console.log(response.data);
 			})
 			.catch((e) => {
-				console.log(e);
+				console.log(
+					`Some error occurred during item data retrieval: ${e}`
+				);
 			});
+	};
+
+	useEffect(retrieveItems, [page, pageSize]);
+
+	// change the page
+	const handlePageChange = (e, value) => {
+		setPage(value);
+	};
+
+	// change the number of items perpage
+	const handlePageSizeChange = (e) => {
+		setPageSize(e.target.value);
+		setPage(1);
 	};
 
 	// function to refresh and reset the item list display
@@ -97,6 +140,8 @@ const ItemsList = () => {
 			<Row>
 				<Col sm={3}>
 					<h4>Items List</h4>
+					{/* Adding pagination elements */}
+					
 					{/* This should be the list of all the items */}
 					<ListGroup>
 						{items &&
