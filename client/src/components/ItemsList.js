@@ -141,7 +141,7 @@ const ItemsList = () => {
 				{/* Adding pagination elements */}
 
 				<div className="mb-3">
-					<Col sm>
+					<Col>
 						{"Items per page: "}
 						<select
 							aria-label="Items per page dropdown"
@@ -155,7 +155,7 @@ const ItemsList = () => {
 							))}
 						</select>
 					</Col>
-					<Col sm>
+					<Col>
 						<Pagination
 							count={count}
 							page={page}
