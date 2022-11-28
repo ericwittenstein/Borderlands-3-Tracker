@@ -125,7 +125,7 @@ const ItemsList = () => {
 	return (
 		<ListGroup>
 			{/* Search Bar */}
-			<Row>
+			<Row md={6}>
 				<InputGroup className="mb-3">
 					<Form.Control
 						placeholder="Search by Item Name"
@@ -137,11 +137,12 @@ const ItemsList = () => {
 					</Button>
 				</InputGroup>
 			</Row>
-			<Container className="mb-3">
-				<Row>
+			<Row>
+				<Col sm={3}>
+					<h4>Items List</h4>
 					{/* Adding pagination elements */}
 
-					<Col sm={5}>
+					<div className="mt-3">
 						{"Items per page: "}
 						<select
 							aria-label="Items per page dropdown"
@@ -154,9 +155,9 @@ const ItemsList = () => {
 								</option>
 							))}
 						</select>
-					</Col>
-					<Col sm={5}>
+
 						<Pagination
+							className="my-3"
 							count={count}
 							page={page}
 							siblingCount={1}
@@ -166,12 +167,7 @@ const ItemsList = () => {
 							color="primary"
 							onChange={handlePageChange}
 						/>
-					</Col>
-				</Row>
-			</Container>
-			<Row>
-				<Col sm={3}>
-					<h4>Items List</h4>
+					</div>
 
 					{/* This should be the list of all the items */}
 					<ListGroup>
