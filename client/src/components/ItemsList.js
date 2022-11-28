@@ -137,10 +137,10 @@ const ItemsList = () => {
 					</Button>
 				</InputGroup>
 			</Row>
-			<Row>
-				{/* Adding pagination elements */}
+			<Container className="mb-3">
+				<Row>
+					{/* Adding pagination elements */}
 
-				<Container className="mb-3">
 					<Col sm={5}>
 						{"Items per page: "}
 						<select
@@ -167,8 +167,8 @@ const ItemsList = () => {
 							onChange={handlePageChange}
 						/>
 					</Col>
-				</Container>
-			</Row>
+				</Row>
+			</Container>
 			<Row>
 				<Col sm={3}>
 					<h4>Items List</h4>
