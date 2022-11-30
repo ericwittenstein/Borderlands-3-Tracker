@@ -93,6 +93,8 @@ const Item = (props) => {
 			});
 	};
 
+	const CheckSelected = `selected`
+
 	return (
 		<Container>
 			{currentItem ? (
@@ -122,27 +124,86 @@ const Item = (props) => {
 							>
 								<option>Choose Item Type</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "Handgun") ? selected : "" )} value={"Handgun"}>Handgun</option>
+								<option
+									{...(currentItem.item_type === "Handgun"
+										? CheckSelected
+										: "")}
+									value={"Handgun"}
+								>
+									Handgun
+								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "Rifle") ? selected : "" )} value={"Rifle"}>
+								<option
+									{...(currentItem.item_type === "Rifle"
+										? CheckSelected
+										: "")}
+									value={"Rifle"}
+								>
 									Rifle
 								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "SMG") ? selected : "" )} value={"SMG"}>
+								<option
+									{...(currentItem.item_type === "SMG"
+										? CheckSelected
+										: "")}
+									value={"SMG"}
+								>
 									Submachine Gun (SMG)
 								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "Shotgun") ? selected : "" )} value={"Shotgun"}>Shotgun</option>
+								<option
+									{...(currentItem.item_type === "Shotgun"
+										? CheckSelected
+										: "")}
+									value={"Shotgun"}
+								>
+									Shotgun
+								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "Sniper") ? selected : "" )} value={"Sniper"}>Sniper</option>
+								<option
+									{...(currentItem.item_type === "Sniper"
+										? CheckSelected
+										: "")}
+									value={"Sniper"}
+								>
+									Sniper
+								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "Heavy") ? selected : "" )} value={"Heavy"}>Heavy</option>
+								<option
+									{...(currentItem.item_type === "Heavy"
+										? CheckSelected
+										: "")}
+									value={"Heavy"}
+								>
+									Heavy
+								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option  {...((currentItem.item_type === "Grenade") ? selected : "" )}value={"Grenade"}>Grenade</option>
+								<option
+									{...(currentItem.item_type === "Grenade"
+										? CheckSelected
+										: "")}
+									value={"Grenade"}
+								>
+									Grenade
+								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option  {...((currentItem.item_type === "Shield") ? selected : "" )}value={"Shield"}>Shield</option>
+								<option
+									{...(currentItem.item_type === "Shield"
+										? CheckSelected 
+										: "")}
+									value={"Shield"}
+								>
+									Shield
+								</option>
 								{/* eslint-disable-next-line no-undef */}
-								<option {...((currentItem.item_type === "Class Mod") ? selected : "" )} value={"Class Mod"}>Class Mod</option>
+								<option
+									{...(currentItem.item_type === "Class Mod"
+										? CheckSelected
+										: "")}
+									value={"Class Mod"}
+								>
+									Class Mod
+								</option>
 							</Form.Select>
 						</Form.Group>
 						<Form.Group className="itemrow">
