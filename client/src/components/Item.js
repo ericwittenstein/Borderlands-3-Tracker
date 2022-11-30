@@ -82,16 +82,16 @@ const Item = (props) => {
 	};
 
 	// DO NOT USE UNLESS ABSOLUTELY NECESSARY
-	const deleteItem = () => {
-		ItemService.remove(currentItem.id)
-			.then((response) => {
-				console.log(response.data);
-				navigate("/items");
-			})
-			.catch((e) => {
-				console.log(e);
-			});
-	};
+	// const deleteItem = () => {
+	// 	ItemService.remove(currentItem.id)
+	// 		.then((response) => {
+	// 			console.log(response.data);
+	// 			navigate("/items");
+	// 		})
+	// 		.catch((e) => {
+	// 			console.log(e);
+	// 		});
+	// };
 
 	const CheckSelected = `selected`
 
