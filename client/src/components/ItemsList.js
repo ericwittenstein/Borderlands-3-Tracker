@@ -21,9 +21,9 @@ const ItemsList = () => {
 
 	const [page, setPage] = useState(1);
 	const [count, setCount] = useState(0);
-	const [pageSize, setPageSize] = useState(10);
+	const [pageSize, setPageSize] = useState(20);
 
-	const pageSizes = [5, 10, 20];
+	const pageSizes = [20, 40, 60];
 
 	// tracker for value changes and assignment for search bar
 	const onChangeSearchName = (e) => {
